@@ -153,6 +153,13 @@ class Issue(Base, TimestampMixin):
     resolved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     resolution_note: Mapped[str] = mapped_column(Text, default="")
 
+    #: Set when an officer merges this issue into another one. The row is kept
+    #: forever - merging is a link, never a delete - but a merged issue is
+    #: excluded from every queue, map, metric and dedup candidate search.
+    merged_into_id: Mapped[int | None] = mapped_column(
+        ForeignKey("issues.id"), nullable=True, index=True
+    )
+
     #: Only populated for seeded evaluation data; lets evaluate.py score dedup.
     ground_truth_cluster: Mapped[str | None] = mapped_column(String(48), nullable=True)
 

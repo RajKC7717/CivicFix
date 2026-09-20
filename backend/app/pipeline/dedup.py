@@ -119,12 +119,14 @@ def find_candidates(
     radius_m = float(config["radius_m"])
     window_days = int(config["window_days"])
     weights = config["weights"]
+    decay = float(config.get("distance_decay", 1.0))
     now = _aware(created_at)
     window_start = now - timedelta(days=window_days)
 
     query = select(Issue).where(
         Issue.category == category,
         Issue.status.in_(OPEN_STATUSES),
+        Issue.merged_into_id.is_(None),
         Issue.created_at >= window_start.replace(tzinfo=None),
     )
     if exclude_issue_id is not None:
@@ -171,8 +173,11 @@ def find_candidates(
     candidates: list[Candidate] = []
     for index, (issue, distance) in enumerate(geo_filtered):
         text_similarity = float(text_scores[index])
+        # Decay proximity gently inside the radius. The candidate has already
+        # passed a hard distance gate, and two people pinning the same pothole
+        # routinely differ by 50-100 m. See `distance_decay` in the policy file.
         distance_score = (
-            1.0 - min(1.0, distance / radius_m) if distance is not None else 0.0
+            1.0 - decay * min(1.0, distance / radius_m) if distance is not None else 0.0
         )
         hours_apart = abs((now - _aware(issue.created_at)).total_seconds()) / 3600.0
         time_score = max(0.0, 1.0 - min(1.0, hours_apart / window_hours))

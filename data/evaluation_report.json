@@ -1,0 +1,167 @@
+{
+  "generated_at": "2026-09-20T10:38:44.832165+00:00",
+  "test_set": {
+    "reports": 96,
+    "clusters": 73,
+    "languages": {
+      "en": 25,
+      "mr": 37,
+      "hi": 15,
+      "hinglish": 19
+    },
+    "categories": {
+      "tree_fall_hazard": 6,
+      "other": 4,
+      "streetlight": 20,
+      "pothole_road": 19,
+      "water_supply": 10,
+      "drainage_sewage": 18,
+      "garbage_waste": 9,
+      "stray_animals": 6,
+      "encroachment_illegal_parking": 4
+    }
+  },
+  "classification": {
+    "offline_classifier": {
+      "n": 96,
+      "accuracy": 0.9896,
+      "macro_f1": 0.9848,
+      "by_language": {
+        "en": {
+          "n": 25,
+          "accuracy": 1.0,
+          "macro_f1": 1.0
+        },
+        "hi": {
+          "n": 15,
+          "accuracy": 1.0,
+          "macro_f1": 1.0
+        },
+        "hinglish": {
+          "n": 19,
+          "accuracy": 0.9474,
+          "macro_f1": 0.8286
+        },
+        "mr": {
+          "n": 37,
+          "accuracy": 1.0,
+          "macro_f1": 1.0
+        }
+      },
+      "routed_to_human_pct": 5.2,
+      "median_latency_ms": 2.77,
+      "top_confusions": [
+        {
+          "true": "streetlight",
+          "predicted": "other",
+          "count": 1
+        }
+      ],
+      "model_trained": true
+    },
+    "llm": {
+      "evaluated": false,
+      "reason": "LLM_PROVIDER=none with no usable key. The offline classifier is the live path; these are the numbers that matter for the demo."
+    }
+  },
+  "dedup": {
+    "reports": 96,
+    "issues_created": 80,
+    "ideal_issues": 73,
+    "auto_merge": {
+      "precision": 1.0,
+      "recall": 0.58,
+      "f1": 0.7342,
+      "true_positive_pairs": 29,
+      "false_positive_pairs": 0,
+      "false_negative_pairs": 21,
+      "issues": 80
+    },
+    "with_human_review": {
+      "precision": 1.0,
+      "recall": 0.72,
+      "f1": 0.8372,
+      "true_positive_pairs": 36,
+      "false_positive_pairs": 0,
+      "false_negative_pairs": 14,
+      "issues": 76
+    },
+    "pairwise_precision": 1.0,
+    "pairwise_recall": 0.58,
+    "pairwise_f1": 0.7342,
+    "triage_work_saved_pct": 16.7,
+    "triage_work_saved_with_review_pct": 20.8,
+    "best_possible_work_saved_pct": 24.0,
+    "decisions": {
+      "new": 76,
+      "review": 4,
+      "merge": 16
+    },
+    "caveat": "Every true-duplicate pair in this split passes the hard gates (same category, within 150 m, within 14 days) and no non-duplicate pair does, so precision of 1.000 is an upper bound: the split contains no near-miss negatives. Thresholds were therefore set by reasoning about score composition with a safety margin, not by maximising F1 here."
+  },
+  "geocoding": {
+    "resolved_pct": 100.0,
+    "by_source": {
+      "gps": 96
+    }
+  },
+  "human_review": {
+    "tasks_raised": 9,
+    "by_kind": {
+      "duplicate_candidate": 4,
+      "low_confidence_category": 5
+    },
+    "share_of_reports_pct": 9.4
+  },
+  "latency": {
+    "pipeline_p50_ms": 9.8,
+    "pipeline_p95_ms": 12.95,
+    "by_stage": {
+      "dedup": {
+        "p50_ms": 1.0,
+        "p95_ms": 3.0
+      },
+      "geocode": {
+        "p50_ms": 0.0,
+        "p95_ms": 0.0
+      },
+      "image": {
+        "p50_ms": 0.0,
+        "p95_ms": 0.0
+      },
+      "priority": {
+        "p50_ms": 1.0,
+        "p95_ms": 1.0
+      },
+      "redact": {
+        "p50_ms": 0.0,
+        "p95_ms": 0.0
+      },
+      "sla": {
+        "p50_ms": 0.0,
+        "p95_ms": 0.0
+      },
+      "understand": {
+        "p50_ms": 2.0,
+        "p95_ms": 3.0
+      },
+      "ward": {
+        "p50_ms": 1.0,
+        "p95_ms": 2.0
+      }
+    }
+  },
+  "geocoding_text_only": {
+    "mode": "offline (landmark fallback only)",
+    "n": 96,
+    "resolved_pct": 100.0,
+    "by_source": {
+      "landmark": 96
+    }
+  },
+  "configuration": {
+    "llm_provider": "none",
+    "llm_active": false,
+    "offline_model_trained": true
+  }
+}

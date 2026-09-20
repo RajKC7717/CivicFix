@@ -1,0 +1,369 @@
+text,category,source_type,occurrences
+Sewer - Sewer Backup (Use Comments) (SA),drainage_sewage,Sewer,75918
+Sewer - Catch Basin Clogged/Flooding (Use Comments) (SC),drainage_sewage,Sewer,44481
+Sewer - Street Flooding (SJ),drainage_sewage,Sewer,21507
+Sewer - Catch Basin Sunken/Damaged/Raised (SC1),drainage_sewage,Sewer,8776
+Sewer - Sewer Odor (SA2),drainage_sewage,Sewer,8577
+Sewer - Manhole Cover Missing (Emergency) (SA3),drainage_sewage,Sewer,6752
+Sewer - Manhole Overflow (Use Comments) (SA1),drainage_sewage,Sewer,6247
+Sewer - Catch Basin Search (SC2),drainage_sewage,Sewer,5030
+Sewer - Culvert Blocked/Needs Cleaning (SE),drainage_sewage,Sewer,3772
+Sewer - Other Sewer Problem (Use Comments) (SZZ),drainage_sewage,Sewer,3172
+Sewer - Defective/Missing Curb Piece (SC4),drainage_sewage,Sewer,1840
+Sewer - RAIN GARDEN DEBRIS (GIRGD),drainage_sewage,Sewer,1440
+Sewer - Catch Basin Grating Missing (SA4),drainage_sewage,Sewer,1281
+Sewer - Highway Flooding (SH),drainage_sewage,Sewer,531
+Sewer - RAIN GARDEN DEBRIS (SRGDBR),drainage_sewage,Sewer,472
+Sewer - RAIN GARDEN PLANTING (GIRGP),drainage_sewage,Sewer,469
+Sewer - RAIN GARDEN STRUCTURE (GIRGS),drainage_sewage,Sewer,343
+Sewer - RAIN GARDEN FLOODING (SRGFLD),drainage_sewage,Sewer,108
+Sewer - DAMAGE STRUCTURE/RAILING (SRGDM),drainage_sewage,Sewer,61
+Sewer - Manhole Sunken/Damaged/Raised (SB1),drainage_sewage,Sewer,52
+Sewer - Manhole Cover Broken/Making Noise (SB),drainage_sewage,Sewer,38
+Sewer - Catch Basin Connection Broken *Dep Internal Use Only* (SC5),drainage_sewage,Sewer,34
+Sewer - Street Cave-In *Dep Internal Use Only* (SG1),drainage_sewage,Sewer,25
+Sewer - Sewer Break (SBR),drainage_sewage,Sewer,23
+Sewer - Plate Missing/Moved-Exposing Hole (SB4),drainage_sewage,Sewer,2
+Sewer - Plate Noisy/Sunken/Raised (SB5),drainage_sewage,Sewer,1
+Illegal Parking - Blocked Hydrant,encroachment_illegal_parking,Illegal Parking,854785
+Blocked Driveway - No Access,encroachment_illegal_parking,Blocked Driveway,796147
+Illegal Parking - Posted Parking Sign Violation,encroachment_illegal_parking,Illegal Parking,687228
+Illegal Parking - Blocked Sidewalk,encroachment_illegal_parking,Illegal Parking,376293
+Derelict Vehicles - Derelict Vehicles,encroachment_illegal_parking,Derelict Vehicles,293468
+Blocked Driveway - Partial Access,encroachment_illegal_parking,Blocked Driveway,278803
+Illegal Parking - Commercial Overnight Parking,encroachment_illegal_parking,Illegal Parking,239522
+Illegal Parking - Double Parked Blocking Traffic,encroachment_illegal_parking,Illegal Parking,167705
+Illegal Parking - Blocked Crosswalk,encroachment_illegal_parking,Illegal Parking,143141
+Illegal Parking - Blocked Bike Lane,encroachment_illegal_parking,Illegal Parking,126732
+Illegal Parking - Parking Permit Improper Use,encroachment_illegal_parking,Illegal Parking,100955
+Illegal Parking - Double Parked Blocking Vehicle,encroachment_illegal_parking,Illegal Parking,90105
+Vendor Enforcement - Food Vendor,encroachment_illegal_parking,Vendor Enforcement,58229
+Illegal Parking - Paper License Plates,encroachment_illegal_parking,Illegal Parking,42379
+Illegal Parking - License Plate Obscured,encroachment_illegal_parking,Illegal Parking,40901
+Obstruction - Cone,encroachment_illegal_parking,Obstruction,31842
+Vendor Enforcement - Non-Food Vendor,encroachment_illegal_parking,Vendor Enforcement,28236
+Illegal Parking - Unauthorized Bus Layover,encroachment_illegal_parking,Illegal Parking,27403
+Obstruction - Trash or Recycling,encroachment_illegal_parking,Obstruction,25543
+Illegal Parking - Overnight Commercial Storage,encroachment_illegal_parking,Illegal Parking,18883
+Obstruction - Weeds or Grass,encroachment_illegal_parking,Obstruction,16884
+Illegal Parking - Detached Trailer,encroachment_illegal_parking,Illegal Parking,9858
+Obstruction - Merchandise,encroachment_illegal_parking,Obstruction,8871
+Obstruction - Sign,encroachment_illegal_parking,Obstruction,3812
+Obstruction - Sidewalk Display,encroachment_illegal_parking,Obstruction,943
+Obstruction - Donation Collection Bin,encroachment_illegal_parking,Obstruction,183
+Obstruction - Coin-Operated Ride,encroachment_illegal_parking,Obstruction,15
+Illegal Parking - Loud Music/Party,encroachment_illegal_parking,Illegal Parking,5
+Illegal Parking - No Access,encroachment_illegal_parking,Illegal Parking,5
+Blocked Driveway - Posted Parking Sign Violation,encroachment_illegal_parking,Blocked Driveway,1
+Illegal Parking - Partial Access,encroachment_illegal_parking,Illegal Parking,1
+Illegal Parking - Loud Talking,encroachment_illegal_parking,Illegal Parking,1
+Blocked Driveway - Loud Music/Party,encroachment_illegal_parking,Blocked Driveway,1
+Dirty Condition - Trash,garbage_waste,Dirty Condition,248028
+Illegal Dumping - Removal Request,garbage_waste,Illegal Dumping,151758
+Missed Collection - Trash,garbage_waste,Missed Collection,96642
+Sanitation Condition - 15 Street Cond/Dump-Out/Drop-Off,garbage_waste,Sanitation Condition,44915
+Missed Collection (All Materials) - 1 Missed Collection,garbage_waste,Missed Collection (All Materials),36346
+Dirty Conditions - E3 Dirty Sidewalk,garbage_waste,Dirty Conditions,30448
+Missed Collection - Compost,garbage_waste,Missed Collection,30381
+Missed Collection - Recycling - Paper/Metal/Glass/Rigid Plastic,garbage_waste,Missed Collection,29650
+Missed Collection - Bulky Trash,garbage_waste,Missed Collection,28978
+Illegal Dumping - Chronic Dumping,garbage_waste,Illegal Dumping,24946
+Missed Collection - Recycling - Paper,garbage_waste,Missed Collection,22975
+Residential Disposal Complaint - Trash or Recycling Not Secure,garbage_waste,Residential Disposal Complaint,22761
+Missed Collection - Recycling - Metal/Glass/Rigid Plastic,garbage_waste,Missed Collection,16491
+Missed Collection - Bulky Recycling,garbage_waste,Missed Collection,14632
+Sanitation Condition - 12 Dead Animals,garbage_waste,Sanitation Condition,14108
+Dirty Condition - Dog Waste,garbage_waste,Dirty Condition,13254
+Residential Disposal Complaint - Waste Set Out Too Early or Too Late,garbage_waste,Residential Disposal Complaint,12660
+Missed Collection (All Materials) - 1R Missed Recycling-All Materials,garbage_waste,Missed Collection (All Materials),12646
+Missed Collection (All Materials) - 2 Bulk-Missed Collection,garbage_waste,Missed Collection (All Materials),12066
+Dirty Conditions - E3A Dirty Area/Alleyway,garbage_waste,Dirty Conditions,9030
+Residential Disposal Complaint - Waste Left in Front of Other Residence,garbage_waste,Residential Disposal Complaint,9011
+Dirty Conditions - E1 Improper Disposal,garbage_waste,Dirty Conditions,8184
+Missed Collection (All Materials) - 1RG Missed Recycling Paper,garbage_waste,Missed Collection (All Materials),7918
+Missed Collection (All Materials) - 2R Bulk-Missed Recy Collection,garbage_waste,Missed Collection (All Materials),6711
+Missed Collection - Trash and Bulky Trash,garbage_waste,Missed Collection,6305
+Missed Collection (All Materials) - 1RB Missed Recycling - M/G/Pl,garbage_waste,Missed Collection (All Materials),5659
+Dirty Condition - Dirt or Gravel,garbage_waste,Dirty Condition,5427
+Dirty Condition - Broken Glass,garbage_waste,Dirty Condition,5409
+Residential Disposal Complaint - Waste Not Separated,garbage_waste,Residential Disposal Complaint,4798
+Dirty Conditions - E5 Loose Rubbish,garbage_waste,Dirty Conditions,4663
+Overflowing Litter Baskets - 6 Overflowing Litter Baskets,garbage_waste,Overflowing Litter Baskets,4568
+Commercial Disposal Complaint - Waste Disposal,garbage_waste,Commercial Disposal Complaint,4314
+Dirty Condition - Syringes,garbage_waste,Dirty Condition,3780
+Dirty Conditions - E15 Illegal Postering,garbage_waste,Dirty Conditions,3297
+Residential Disposal Complaint - Bin Not Used,garbage_waste,Residential Disposal Complaint,3188
+Dirty Conditions - E12 Illegal Dumping Surveillance,garbage_waste,Dirty Conditions,2788
+Residential Disposal Complaint - Trash Not Separated from Recycling,garbage_waste,Residential Disposal Complaint,2761
+Sanitation Condition - 22 Weeds,garbage_waste,Sanitation Condition,2708
+Commercial Disposal Complaint - Waste Left in Front of Residence,garbage_waste,Commercial Disposal Complaint,2651
+Residential Disposal Complaint - Storage Area Not Provided,garbage_waste,Residential Disposal Complaint,2627
+Dirty Conditions - E8 Canine Violation,garbage_waste,Dirty Conditions,2496
+Commercial Disposal Complaint - Private Carter Decal Not Posted,garbage_waste,Commercial Disposal Complaint,2336
+Commercial Disposal Complaint - No Private Carter,garbage_waste,Commercial Disposal Complaint,2315
+Residential Disposal Complaint - Mattress or Box Spring Uncovered,garbage_waste,Residential Disposal Complaint,2281
+Dirty Conditions - E2 Receptacle Violation,garbage_waste,Dirty Conditions,2193
+Dirty Condition - Debris from Car Accident,garbage_waste,Dirty Condition,2171
+Dirty Conditions - E11 Litter Surveillance,garbage_waste,Dirty Conditions,2062
+"Dirty Conditions - E4 18"" Law",garbage_waste,Dirty Conditions,2046
+Missed Collection (All Materials) - 1C Uncollected Xmas Trees,garbage_waste,Missed Collection (All Materials),1031
+Residential Disposal Complaint - Containers Left Out After Collection,garbage_waste,Residential Disposal Complaint,962
+Sanitation Condition - 15N Needle/Syringe on Street/Sidewalk,garbage_waste,Sanitation Condition,789
+Dirty Conditions - E1A Litter Basket / Improper Use,garbage_waste,Dirty Conditions,745
+Residential Disposal Complaint - Refrigerator or Freezer Door Attached,garbage_waste,Residential Disposal Complaint,623
+Missed Collection (All Materials) - 1RO Missed Recycling Organics,garbage_waste,Missed Collection (All Materials),444
+Dirty Conditions - E13 Throw-Out,garbage_waste,Dirty Conditions,236
+Commercial Disposal Complaint - Trash Not Separated from Recycling,garbage_waste,Commercial Disposal Complaint,217
+Sanitation Condition - 15R Street Cond/Ref.W Door,garbage_waste,Sanitation Condition,207
+Residential Disposal Complaint - Recycling Posters Not Posted,garbage_waste,Residential Disposal Complaint,148
+Residential Disposal Complaint - Containers Set Out Too Early,garbage_waste,Residential Disposal Complaint,59
+Sanitation Condition - 12P Dead Deer,garbage_waste,Sanitation Condition,39
+Dirty Conditions - E7 Private Carter Spillage,garbage_waste,Dirty Conditions,36
+Residential Disposal Complaint - Curbside Composting,garbage_waste,Residential Disposal Complaint,10
+Missed Collection (All Materials) - 1L Missed Recycling Leaves,garbage_waste,Missed Collection (All Materials),3
+Sanitation Condition - 9 Spill/Oil etc,garbage_waste,Sanitation Condition,2
+Electronics Waste - 1RE missed collection for E-waste,garbage_waste,Electronics Waste,2
+Illegal Dumping - Refrigerator or Freezer Door Attached,garbage_waste,Illegal Dumping,2
+Street Condition - Pothole,pothole_road,Street Condition,304886
+Sidewalk Condition - Broken Sidewalk,pothole_road,Sidewalk Condition,74294
+Street Condition - Cave-in,pothole_road,Street Condition,65852
+Sidewalk Condition - Sidewalk Violation,pothole_road,Sidewalk Condition,57758
+Street Condition - Defective Hardware,pothole_road,Street Condition,33801
+Curb Condition - Broken Curb,pothole_road,Curb Condition,29754
+Street Condition - Failed Street Repair,pothole_road,Street Condition,25735
+Street Condition - Blocked - Construction,pothole_road,Street Condition,23469
+"Street Condition - Rough, Pitted or Cracked Roads",pothole_road,Street Condition,20198
+Sidewalk Condition - Blocked - Construction,pothole_road,Sidewalk Condition,16839
+Street Condition - Plate Condition - Noisy,pothole_road,Street Condition,16646
+Curb Condition - Defacement,pothole_road,Curb Condition,12304
+Highway Condition - Pothole - Highway,pothole_road,Highway Condition,11602
+Highway Condition - Litter,pothole_road,Highway Condition,5386
+Street Condition - Line/Marking - Faded,pothole_road,Street Condition,5322
+Sidewalk Condition - Sidewalk Collapsed,pothole_road,Sidewalk Condition,3824
+Street Condition - Line/Marking - After Repaving,pothole_road,Street Condition,3705
+Street Condition - Wear & Tear,pothole_road,Street Condition,3703
+Street Condition - Plate Condition - Shifted,pothole_road,Street Condition,3699
+Curb Condition - Curb Defect-Metal Protruding,pothole_road,Curb Condition,3382
+Sidewalk Condition - Pedestrian Ramp Defective,pothole_road,Sidewalk Condition,3292
+Street Condition - Dumpster - Construction Waste,pothole_road,Street Condition,3147
+Sidewalk Condition - Defective Hardware,pothole_road,Sidewalk Condition,2460
+Highway Condition - Graffiti - Highway,pothole_road,Highway Condition,2112
+Highway Condition - Cave-in,pothole_road,Highway Condition,1724
+Street Condition - Crash Cushion Defect,pothole_road,Street Condition,1570
+Sidewalk Condition - Sidewalk Grating - Defective,pothole_road,Sidewalk Condition,1481
+Highway Condition - Dead Animal,pothole_road,Highway Condition,1430
+Sidewalk Condition - Dumpster - Construction Waste,pothole_road,Sidewalk Condition,1286
+Highway Condition - Painted Line/Marking,pothole_road,Highway Condition,1056
+Sidewalk Condition - Newspaper Box Complaint,pothole_road,Sidewalk Condition,1027
+Highway Condition - High Grass,pothole_road,Highway Condition,825
+Street Condition - Guard Rail - Street,pothole_road,Street Condition,825
+Sidewalk Condition - Metal Protruding - Sign Stump,pothole_road,Sidewalk Condition,804
+Sidewalk Condition - Sidewalk Staircase,pothole_road,Sidewalk Condition,588
+Sidewalk Condition - Cellar Door Open/Unprotected,pothole_road,Sidewalk Condition,576
+Highway Condition - Crash Cushion Defect,pothole_road,Highway Condition,492
+Highway Condition - Unsafe Worksite,pothole_road,Highway Condition,480
+Highway Condition - Highway Fence,pothole_road,Highway Condition,439
+Sidewalk Condition - Cellar Door Defective,pothole_road,Sidewalk Condition,439
+Street Condition - Plate Condition - Open,pothole_road,Street Condition,432
+Sidewalk Condition - Canopy Complaint,pothole_road,Sidewalk Condition,419
+Street Condition - Depression Maintenance,pothole_road,Street Condition,381
+Highway Condition - Loose Plate,pothole_road,Highway Condition,374
+Street Condition - Hummock,pothole_road,Street Condition,363
+Sidewalk Condition - Blocked - ATM,pothole_road,Sidewalk Condition,356
+Street Condition - Unsafe Worksite,pothole_road,Street Condition,342
+Street Condition - Plate Condition - Anti-Skid,pothole_road,Street Condition,276
+Sidewalk Condition - Sidewalk Grating - Missing,pothole_road,Sidewalk Condition,263
+Highway Condition - Guard Rail - Highway,pothole_road,Highway Condition,174
+Sidewalk Condition - Defacement,pothole_road,Sidewalk Condition,70
+Highway Condition - Sign Blocked by Tree,pothole_road,Highway Condition,68
+Highway Condition - Concrete Barrier,pothole_road,Highway Condition,63
+Sidewalk Condition - Unsafe Worksite,pothole_road,Sidewalk Condition,53
+Street Condition - Defacement,pothole_road,Street Condition,47
+Street Condition - Maintenance Cover,pothole_road,Street Condition,39
+Street Condition - Crack Sealing,pothole_road,Street Condition,39
+Curb Condition - Curb Violation,pothole_road,Curb Condition,38
+Highway Condition - Debris,pothole_road,Highway Condition,20
+Street Condition - Strip Paving,pothole_road,Street Condition,16
+Street Condition - General Bad Condition,pothole_road,Street Condition,10
+Sidewalk Condition - Cellar Door New,pothole_road,Sidewalk Condition,10
+Street Condition - Suspected Street Cut,pothole_road,Street Condition,7
+Sidewalk Condition - Hydrant Defect,pothole_road,Sidewalk Condition,3
+Sidewalk Condition - Sidewalk CafÃ©,pothole_road,Sidewalk Condition,1
+Street Condition - Dumpster - Causing Damage,pothole_road,Street Condition,1
+Street Condition - Guide Rail,pothole_road,Street Condition,1
+Sidewalk Condition - Broken Curb,pothole_road,Sidewalk Condition,1
+Rodent - Rat Sighting,stray_animals,Rodent,151480
+Rodent - Condition Attracting Rodents,stray_animals,Rodent,44901
+Rodent - Signs of Rodents,stray_animals,Rodent,26420
+Dead Animal - Cat,stray_animals,Dead Animal,20402
+Rodent - Mouse Sighting,stray_animals,Rodent,17278
+Animal in a Park - Dog Off Leash,stray_animals,Animal in a Park,16833
+Unleashed Dog - Unleashed Dog in Public,stray_animals,Unleashed Dog,9881
+Unsanitary Animal Pvt Property - Dog,stray_animals,Unsanitary Animal Pvt Property,9308
+Dead Animal - Raccoon,stray_animals,Dead Animal,6492
+Dead Animal - Rat or Mouse,stray_animals,Dead Animal,6395
+Animal in a Park - Injured Wildlife,stray_animals,Animal in a Park,6134
+Dead Animal - Opossum,stray_animals,Dead Animal,4221
+Unsanitary Animal Pvt Property - Cat,stray_animals,Unsanitary Animal Pvt Property,4091
+Dead Animal - Bird,stray_animals,Dead Animal,3838
+Dead Animal - Squirrel,stray_animals,Dead Animal,3523
+Dead Animal - Other,stray_animals,Dead Animal,3474
+Animal in a Park - Dead Animal,stray_animals,Animal in a Park,3266
+Dead Animal - Dog,stray_animals,Dead Animal,2449
+Unsanitary Animal Pvt Property - Other Animal,stray_animals,Unsanitary Animal Pvt Property,2194
+Animal in a Park - Domestic Strays,stray_animals,Animal in a Park,1595
+Animal in a Park - Wildlife Sighting,stray_animals,Animal in a Park,1407
+Animal in a Park - Removing Wildlife,stray_animals,Animal in a Park,1255
+Animal in a Park - Animal Waste,stray_animals,Animal in a Park,1181
+Dead Animal - Deer,stray_animals,Dead Animal,769
+Rodent - Rodent Bite - PCS Only,stray_animals,Rodent,56
+Animal in a Park - Unsafe Use of Playground,stray_animals,Animal in a Park,1
+Animal in a Park - Structure - Outdoors,stray_animals,Animal in a Park,1
+Street Light Condition - Street Light Out,streetlight,Street Light Condition,218617
+Street Light Condition - Lamppost Base Door/Cover Open,streetlight,Street Light Condition,9315
+Street Light Condition - Fixture/Luminaire Door Open,streetlight,Street Light Condition,8037
+Street Light Condition - Fixture/Luminaire Out Of Position,streetlight,Street Light Condition,7283
+Street Light Condition - Street Light Cycling,streetlight,Street Light Condition,6769
+Street Light Condition - Fixture/Luminaire Hanging,streetlight,Street Light Condition,5831
+Street Light Condition - Multiple Street Lights Out,streetlight,Street Light Condition,5498
+Street Light Condition - Street Light Dayburning,streetlight,Street Light Condition,4793
+Street Light Condition - Lamppost Knocked Down,streetlight,Street Light Condition,4293
+Street Light Condition - Lamppost Wire Exposed,streetlight,Street Light Condition,4141
+Street Light Condition - Traffic Signal Light,streetlight,Street Light Condition,4048
+Street Light Condition - Street Light Lamp Dim,streetlight,Street Light Condition,3341
+Street Light Condition - Lamppost Damaged,streetlight,Street Light Condition,2964
+Street Light Condition - Lamppost Leaning,streetlight,Street Light Condition,2621
+Street Light Condition - Street Light Lamp Missing,streetlight,Street Light Condition,2434
+Street Light Condition - Lamppost Missing,streetlight,Street Light Condition,2068
+Street Light Condition - Photocell (PEC) Missing,streetlight,Street Light Condition,1748
+Street Light Condition - Fixture/Luminaire Damaged,streetlight,Street Light Condition,1513
+Street Light Condition - Lamppost Base Door/Cover Damaged,streetlight,Street Light Condition,1370
+Street Light Condition - Flood Light Lamp Out,streetlight,Street Light Condition,1111
+Street Light Condition - Lamppost Base Door/Cover Missing,streetlight,Street Light Condition,1030
+Street Light Condition - Fixture/Luminaire Missing,streetlight,Street Light Condition,935
+Street Light Condition - New Con Ed Service Request,streetlight,Street Light Condition,859
+Street Light Condition - Foreign Attachment On Lamppost,streetlight,Street Light Condition,769
+Street Light Condition - Multiple St Lts Dayburning,streetlight,Street Light Condition,589
+Street Light Condition - Time Clock Maladjusted,streetlight,Street Light Condition,395
+Street Light Condition - Glassware Hanging,streetlight,Street Light Condition,284
+Street Light Condition - Bracket Arm Missing,streetlight,Street Light Condition,239
+Street Light Condition - Flood Light Lamp Cycling,streetlight,Street Light Condition,222
+Street Light Condition - Glassware Broken,streetlight,Street Light Condition,186
+Street Light Condition - Glassware Missing,streetlight,Street Light Condition,175
+Street Light Condition - Foreign Attachment On Wood Pole,streetlight,Street Light Condition,127
+Street Light Condition - Bracket Arm Loose,streetlight,Street Light Condition,116
+Street Light Condition - Bracket Arm Broken,streetlight,Street Light Condition,92
+Street Light Condition - In-Line Fuse Missing,streetlight,Street Light Condition,84
+Street Light Condition - Control Panel Damaged,streetlight,Street Light Condition,62
+Street Light Condition - Bracket Arm Bent,streetlight,Street Light Condition,58
+Street Light Condition - Flood Light Lamp Dayburning,streetlight,Street Light Condition,54
+Street Light Condition - Fire Alarm Lamp Out,streetlight,Street Light Condition,52
+Street Light Condition - Flood Light Lamp Missing,streetlight,Street Light Condition,51
+Street Light Condition - Wood Pole Leaning,streetlight,Street Light Condition,43
+Street Light Condition - Flood Light Lamp Dim,streetlight,Street Light Condition,41
+Street Light Condition - Wood Pole Knocked Down,streetlight,Street Light Condition,37
+Street Light Condition - Fire Globe Missing,streetlight,Street Light Condition,24
+Street Light Condition - Wood Pole Damaged,streetlight,Street Light Condition,21
+Street Light Condition - Wood Pole Wires Exposed,streetlight,Street Light Condition,20
+Street Light Condition - Fire Alarm Lamp Missing,streetlight,Street Light Condition,13
+Street Light Condition - Wood Pole Missing,streetlight,Street Light Condition,9
+Street Light Condition - Fire Alarm Lamp Cycling,streetlight,Street Light Condition,5
+Street Light Condition - Defective Streetlight,streetlight,Street Light Condition,4
+Street Light Condition - Fire Alarm Lamp Dim,streetlight,Street Light Condition,3
+Street Light Condition - Fire Alarm Lamp Dayburning,streetlight,Street Light Condition,2
+Street Light Condition - Highway Sign Lighting Repair,streetlight,Street Light Condition,2
+Damaged Tree - Branch or Limb Has Fallen Down,tree_fall_hazard,Damaged Tree,99387
+Dead/Dying Tree - Planted More Than 2 Years Ago,tree_fall_hazard,Dead/Dying Tree,63418
+Damaged Tree - Entire Tree Has Fallen Down,tree_fall_hazard,Damaged Tree,53609
+Overgrown Tree/Branches - Hitting Building,tree_fall_hazard,Overgrown Tree/Branches,48880
+Damaged Tree - Branch Cracked and Will Fall,tree_fall_hazard,Damaged Tree,46812
+Overgrown Tree/Branches - Blocking Street,tree_fall_hazard,Overgrown Tree/Branches,26866
+Damaged Tree - Tree Leaning/Uprooted,tree_fall_hazard,Damaged Tree,24322
+Overgrown Tree/Branches - Dead Branches in Tree,tree_fall_hazard,Overgrown Tree/Branches,21741
+Damaged Tree - Tree Alive - in Poor Condition,tree_fall_hazard,Damaged Tree,21463
+Overgrown Tree/Branches - Hitting Power Lines,tree_fall_hazard,Overgrown Tree/Branches,15370
+Illegal Tree Damage - Branches Damaged,tree_fall_hazard,Illegal Tree Damage,10016
+Overgrown Tree/Branches - Hitting Phone/Cable Lines,tree_fall_hazard,Overgrown Tree/Branches,7827
+Illegal Tree Damage - Trunk Damaged,tree_fall_hazard,Illegal Tree Damage,7224
+Illegal Tree Damage - Roots Damaged,tree_fall_hazard,Illegal Tree Damage,5346
+Overgrown Tree/Branches - Clear Street Light,tree_fall_hazard,Overgrown Tree/Branches,5118
+Dead/Dying Tree - Planted Less Than 2 Years Ago,tree_fall_hazard,Dead/Dying Tree,4572
+Illegal Tree Damage - Unauthorized Tree Removal,tree_fall_hazard,Illegal Tree Damage,4295
+Overgrown Tree/Branches - Hitting Power/Phone Lines,tree_fall_hazard,Overgrown Tree/Branches,4227
+Overgrown Tree/Branches - Traffic Sign or Signal Blocked,tree_fall_hazard,Overgrown Tree/Branches,3973
+Damaged Tree - Tree Trunk Split,tree_fall_hazard,Damaged Tree,3529
+Illegal Tree Damage - Bicycle Chained to Tree,tree_fall_hazard,Illegal Tree Damage,2840
+Illegal Tree Damage - Unauthorized Tree Pruning,tree_fall_hazard,Illegal Tree Damage,1896
+Water System - Hydrant Running Full (WA4),water_supply,Water System,66426
+Water System - Hydrant Running (WC3),water_supply,Water System,65177
+Water System - Leak (Use Comments) (WA2),water_supply,Water System,61130
+Water System - Dirty Water (WE),water_supply,Water System,59477
+Water System - Fire Hydrant Emergency (FHE),water_supply,Water System,44330
+Water System - Hydrant Leaking (WC1),water_supply,Water System,36575
+Water System - Possible Water Main Break (Use Comments) (WA1),water_supply,Water System,26790
+Water System - No Water (WNW),water_supply,Water System,18836
+Water System - Hydrant Defective (WC2),water_supply,Water System,13634
+Water Conservation - Illegal Use Of A Hydrant (CIN),water_supply,Water Conservation,11473
+Water System - LOW WATER PRESSURE - WLWP,water_supply,Water System,9158
+Water Conservation - Water Meter Broken/Leaking - Private Residence (CMR),water_supply,Water Conservation,8824
+Water System - Hydrant Knocked Over/Missing (WC),water_supply,Water System,8405
+Water System - Excessive Water In Basement (WEFB),water_supply,Water System,6272
+Water Conservation - Water Meter Broken/Leaking - Other (CMO),water_supply,Water Conservation,2663
+Water System - Hydrant Locking Device Request (Use Comments) (WC5),water_supply,Water System,2250
+"Water Quality - Taste/Odor, Musty/Stale (QA4)",water_supply,Water Quality,2071
+Drinking Water - Illness Caused by Drinking Water,water_supply,Drinking Water,2027
+Water System - Other Water Problem (Use Comments) (WZZ),water_supply,Water System,1987
+Water System - Hyd Valve Box Cover Missing (WV2),water_supply,Water System,1751
+Water Quality - unknown odor/taste in drinking water (QA6),water_supply,Water Quality,1361
+"Water Conservation - Wasting Faucets,Sinks,Flushometer,Urinal,Etc. - Private Residence (CWR)",water_supply,Water Conservation,1251
+"Water Quality - Taste/Odor, Bitter/Metallic (QA3)",water_supply,Water Quality,1102
+"Water Quality - Taste/Odor, Chemical (QA2)",water_supply,Water Quality,956
+"Water Conservation - Wasting Faucets,Sinks,Flushometer,Urinal,Etc. - Other (CWO)",water_supply,Water Conservation,953
+"Water Quality - Taste/Odor, Chlorine (QA1)",water_supply,Water Quality,760
+"Water Quality - Taste/Odor, Sewer (QA5)",water_supply,Water Quality,757
+Water Quality - Clear Water With Other Particles (Use Comments) (QEZ),water_supply,Water Quality,745
+"Water Quality - No Sampling Required, Requested Information (QG2)",water_supply,Water Quality,672
+Water Conservation - Rooftank Leak Or Overflow (CKO),water_supply,Water Conservation,581
+Water Quality - Cloudy Or Milky Water (QB1),water_supply,Water Quality,525
+"Water Quality - Cloudy Or Milky, Other (Use Comments) (QBZ)",water_supply,Water Quality,352
+Water Conservation - Fire Hydrant,water_supply,Water Conservation,335
+Water System - High Water Pressure (WHP),water_supply,Water System,295
+Water Conservation - Water Meter Broken/Leaking,water_supply,Water Conservation,280
+Water System - installation of hydrant side post (WHFP),water_supply,Water System,260
+Water Conservation - Water Meter Stolen/Missing - Private Residence (CLR),water_supply,Water Conservation,258
+Water Conservation - Illegal Use Of Hose - Other (CCO),water_supply,Water Conservation,207
+"Water Quality - Oil, Grease In Water (QD1)",water_supply,Water Quality,183
+Water Conservation - Illegal Use Of Hose - Private Residence (CCR),water_supply,Water Conservation,176
+Water Quality - Odor/Taste,water_supply,Water Quality,170
+Water Quality - Defective Water Sampling Station (QSS),water_supply,Water Quality,121
+"Water Quality - Clear Water With Organisms (Insects, Worms) (QE2)",water_supply,Water Quality,119
+Water Conservation - Water Meter Stolen/Missing - Other (CLO),water_supply,Water Conservation,83
+Water Conservation - Illegal Use Of Hose - Private Residence,water_supply,Water Conservation,81
+Water System - Remove Hydrant Locking Device (WC6),water_supply,Water System,61
+Water Conservation - Water Waste,water_supply,Water Conservation,58
+"Water Conservation - Wasting Faucets,Sinks,Etc., Private Residence (CA1)",water_supply,Water Conservation,40
+Water Quality - Clear With Particles,water_supply,Water Quality,33
+Water Conservation - Roof Tank,water_supply,Water Conservation,27
+Water System - Request To Open A Hydrant (WC4),water_supply,Water System,25
+Water Quality - Cloudy/Milky,water_supply,Water Quality,24
+Water Quality - Drinking Water Information,water_supply,Water Quality,21
+Water System - Manhole Cover Missing (Emergency) For Dep Internal Use Only (WF),water_supply,Water System,10
+Water Conservation - Water Meter Missing/Stolen,water_supply,Water Conservation,9
+Water Quality - Taste/Odor,water_supply,Water Quality,9
+Water Quality - Other Water Problem (Use Comments) (QZZ),water_supply,Water Quality,8
+Water System - Defective Street Cut (WZZ1),water_supply,Water System,8
+Water Conservation - Hose,water_supply,Water Conservation,8
+Water Quality - Bwso Referral To Water Quality (For Dep Internal Use Only) (QBWSO),water_supply,Water Quality,8
+Water Quality - Defective Sampling Station,water_supply,Water Quality,4
+Water Quality - Clear With Insects/Worms,water_supply,Water Quality,4
+Water Conservation - OTHER WATER WASTE PROBLEM (USE COMMENTS) FOR DEP INTERNAL USE ONLY (CZ),water_supply,Water Conservation,3
+Water Quality - Grease/Oil,water_supply,Water Quality,3
+Water Quality - No Sampling Required,water_supply,Water Quality,2
+Water Conservation - Wasting Faucets,water_supply,Water Conservation,2
+Water System - Hyd Valve Box Defective - See Comments *For Dep Use Only* (WV3),water_supply,Water System,2
+Water System - Caps & Chains Missing-Fire Dept Use Only (WKMC),water_supply,Water System,2
+Water System - Manhole Cover Broken/Making Noise *For Dep Internal Use Only* (WF1),water_supply,Water System,1
+Water System - Defective Valve (For Dep Internal Use Only) (WV1),water_supply,Water System,1
+Water Conservation - Illegal Air Conditioning During Drought (CJO),water_supply,Water Conservation,1
+Water Quality - Cloudy Or Milky,water_supply,Water Quality,1
+Water System - Manhole Sunken/Damaged/Raised *For Dep Internal Use Only* (WF2),water_supply,Water System,1

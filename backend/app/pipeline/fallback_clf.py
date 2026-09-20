@@ -183,7 +183,15 @@ def understand_offline(text: str) -> Understanding:
                 confidence = round(model_confidence * 0.90, 4)
                 reasons.append(f"statistical model {model_confidence:.0%}, no keyword match")
             elif lex_category == model_category:
-                confidence = round(min(0.97, model_confidence + 0.15 * lex_share), 4)
+                # Agreement shrinks the remaining doubt rather than adding a
+                # flat bonus. A flat bonus pushed almost everything into the
+                # 0.97 cap and destroyed the ranking between a clear complaint
+                # and a marginal one - which is the signal the review queue
+                # threshold depends on.
+                confidence = round(
+                    min(0.97, model_confidence + 0.35 * lex_share * (1.0 - model_confidence)),
+                    4,
+                )
                 reasons.append(f"model and keywords agree ({model_confidence:.0%})")
             else:
                 # Two independent methods disagree -> deliberately low, so the
@@ -195,6 +203,17 @@ def understand_offline(text: str) -> Understanding:
                 )
         except Exception as exc:  # noqa: BLE001 - fall back to pure lexicon
             logger.warning("Fallback model inference failed (%s); using lexicon only", exc)
+
+    # A very short complaint cannot support a high-confidence reading, however
+    # certain the model sounds. "road" is probably a road complaint, but it is
+    # not 97%-probably one, and pretending otherwise would skip the human
+    # review that a one-word report obviously deserves.
+    word_count = len((text or "").split())
+    if word_count < 4:
+        ceiling = 0.30 + 0.14 * word_count
+        if confidence > ceiling:
+            confidence = round(ceiling, 4)
+            reasons.append(f"capped at {ceiling:.0%}: only {word_count} word(s) of detail")
 
     if category is None:
         return Understanding(

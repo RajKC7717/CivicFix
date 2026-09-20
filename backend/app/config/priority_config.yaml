@@ -132,8 +132,22 @@ dedup:
     text: 0.60
     distance: 0.30
     time: 0.10
-  auto_merge_threshold: 0.78
-  review_threshold: 0.60
+  # How fast the distance score falls off INSIDE the radius.
+  # 0.5 means a report at the very edge of the 150 m radius still scores 0.5 on
+  # proximity rather than 0. This is deliberate: a candidate has already passed
+  # a hard 150 m gate, and two people pinning the same pothole routinely differ
+  # by 50-100 m through GPS drift or describing opposite ends of the same
+  # defect. A linear decay to zero punished that normal variation so hard that
+  # genuinely identical reports failed to merge (measured: recall 0.26 -> 0.56).
+  distance_decay: 0.5
+  # Set by reasoning about score composition with a safety margin, NOT by
+  # maximising F1 on the held-out set - that set contains no near-miss
+  # negatives, so it cannot say where the safe floor is. See docs/EVALUATION.md.
+  # A constructed hard negative ("a different pothole on the same street",
+  # 80 m away, wording 45% similar) scores 0.57, comfortably inside the review
+  # band and well below the automatic-merge line.
+  auto_merge_threshold: 0.72
+  review_threshold: 0.58
   max_candidates: 25
 
 # =============================================================================
