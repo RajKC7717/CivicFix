@@ -194,13 +194,41 @@ def understand_offline(text: str) -> Understanding:
                 )
                 reasons.append(f"model and keywords agree ({model_confidence:.0%})")
             else:
-                # Two independent methods disagree -> deliberately low, so the
-                # orchestrator sends this to a human instead of guessing.
-                confidence = round(min(model_confidence, lex_confidence) * 0.60, 4)
-                reasons.append(
-                    f"model says {model_category} ({model_confidence:.0%}) but keywords "
-                    f"suggest {lex_category} - flagged for review"
+                # The two methods disagree. Whichever we pick, confidence drops
+                # far enough to send this to a human - but the pick still matters,
+                # because it is what the officer sees pre-filled.
+                #
+                # Prefer the lexicon when its evidence is strong AND unambiguous
+                # AND the model is only weakly confident. Measured example: an
+                # exposed electric wire with no tree mentioned drew 0.46 for
+                # tree_fall_hazard from the model (it had learned the phrase
+                # "branches touching electric wires") against an unambiguous
+                # live_wire keyword match. The keyword is right, and it can be
+                # shown to the officer as the reason - the model's 0.46 cannot.
+                # "Undecided" is the margin over the runner-up, not the raw
+                # probability. A model at 0.51 with the next class on 0.17 has
+                # made a real choice and should be trusted; a model at 0.46 with
+                # the next class on 0.30 is guessing, and an unambiguous keyword
+                # beats a guess. Using raw confidence alone conflated the two and
+                # overrode a correct drainage call.
+                runner_up = float(sorted(probabilities)[-2]) if len(probabilities) > 1 else 0.0
+                model_margin = model_confidence - runner_up
+                prefer_lexicon = (
+                    lex_share >= 0.80 and model_margin < 0.25 and model_confidence < 0.80
                 )
+                category = lex_category if prefer_lexicon else model_category
+                confidence = round(min(model_confidence, lex_confidence) * 0.60, 4)
+                if prefer_lexicon:
+                    reasons.append(
+                        f"keywords indicate {lex_category} while the model suggested "
+                        f"{model_category} ({model_confidence:.0%}); the keyword evidence is "
+                        "stronger - flagged for review"
+                    )
+                else:
+                    reasons.append(
+                        f"model says {model_category} ({model_confidence:.0%}) but keywords "
+                        f"suggest {lex_category} - flagged for review"
+                    )
         except Exception as exc:  # noqa: BLE001 - fall back to pure lexicon
             logger.warning("Fallback model inference failed (%s); using lexicon only", exc)
 
@@ -247,4 +275,5 @@ def understand_offline(text: str) -> Understanding:
         model=("tfidf-logreg-v1" if bundle is not None else "lexicon-v1"),
         explanation="; ".join(reasons) if reasons else "Classified from civic keyword matches.",
         matched_terms=analysis.matched_terms,
+        match_text=analysis.match_text,
     )

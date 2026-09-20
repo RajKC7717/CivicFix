@@ -1,0 +1,100 @@
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/noto-sans-devanagari/400.css';
+@import '@fontsource/noto-sans-devanagari/500.css';
+@import '@fontsource/noto-sans-devanagari/600.css';
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink-50 text-ink-900 font-sans antialiased;
+    /* Respect the notch on phones - the citizen app is mobile-first. */
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  /* A visible focus ring everywhere. Civic software has to be keyboard-usable. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-white rounded-sm;
+  }
+  ::selection {
+    @apply bg-brand-200 text-ink-900;
+  }
+}
+
+@layer components {
+  .nn-card {
+    @apply bg-white rounded-xl border border-ink-100 shadow-card;
+  }
+  .nn-label {
+    @apply block text-sm font-medium text-ink-700 mb-1.5;
+  }
+  .nn-hint {
+    @apply text-xs text-ink-500 mt-1.5 leading-relaxed;
+  }
+  .nn-input {
+    @apply w-full rounded-lg border border-ink-200 bg-white px-3.5 py-2.5 text-ink-900
+           placeholder:text-ink-400 transition
+           focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none
+           disabled:bg-ink-50 disabled:text-ink-400;
+  }
+  /* 44px minimum touch target - usable on a phone at a bus stop. */
+  .nn-tap {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  .nn-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.ink.200') transparent;
+  }
+  .nn-scroll::-webkit-scrollbar {
+    @apply w-1.5 h-1.5;
+  }
+  .nn-scroll::-webkit-scrollbar-thumb {
+    @apply bg-ink-200 rounded-full;
+  }
+}
+
+/* Leaflet needs explicit sizing and a font that matches the app. */
+.leaflet-container {
+  @apply font-sans z-0;
+  background: #e8edf3;
+}
+.leaflet-popup-content-wrapper {
+  @apply rounded-xl shadow-pop;
+}
+.leaflet-popup-content {
+  @apply m-0 p-0;
+}
+.leaflet-bar a {
+  @apply text-ink-700;
+}
+
+/* Skeleton shimmer for loading states. */
+.nn-skeleton {
+  @apply relative overflow-hidden bg-ink-100;
+}
+.nn-skeleton::after {
+  content: '';
+  @apply absolute inset-0 -translate-x-full;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media print {
+  .nn-no-print {
+    display: none !important;
+  }
+}

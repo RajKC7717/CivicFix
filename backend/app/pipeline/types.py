@@ -33,6 +33,9 @@ class Understanding(BaseModel):
     model: str = ""
     explanation: str = ""
     matched_terms: list[str] = Field(default_factory=list)
+    #: Similarity key for deduplication. Never shown to anyone; see
+    #: ``lexicon.build_match_text`` for why it differs from ``summary_en``.
+    match_text: str = ""
 
     @field_validator("category")
     @classmethod

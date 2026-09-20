@@ -152,6 +152,10 @@ def _apply_report_to_issue(issue: Issue, report: Report, understanding: Understa
         issue.ward_id = report.ward_id
     if not issue.location_text and report.location_text:
         issue.location_text = report.location_text[:300]
+    # A cluster created from a vague first report can still acquire a match key
+    # from a later, richer one - but it never overwrites an existing key.
+    if not issue.match_text and report.match_text:
+        issue.match_text = report.match_text
     issue.updated_at = _utcnow()
 
 
@@ -284,6 +288,7 @@ def run_pipeline(
     report.ai_explanation = understanding.explanation
     report.matched_terms = understanding.matched_terms[:20]
     report.summary_en = understanding.summary_en
+    report.match_text = understanding.match_text
     report.language = understanding.language
     if image_b64 and understanding.source == "llm":
         report.image_analysed = True
@@ -339,7 +344,7 @@ def run_pipeline(
         decision = dedup_stage.decide(
             db,
             category=understanding.category,
-            summary_en=understanding.summary_en,
+            match_text=understanding.match_text,
             lat=report.lat,
             lon=report.lon,
             created_at=report.created_at or now,
@@ -362,6 +367,7 @@ def run_pipeline(
         issue = Issue(
             issue_code=new_issue_code(),
             title=(understanding.summary_en or report.redacted_text[:120] or "Untitled complaint"),
+            match_text=understanding.match_text,
             category=understanding.category,
             sub_issue=understanding.sub_issue[:120],
             status="received",

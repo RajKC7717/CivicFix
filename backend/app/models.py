@@ -116,6 +116,10 @@ class Issue(Base, TimestampMixin):
     issue_code: Mapped[str] = mapped_column(String(24), unique=True, index=True)
 
     title: Mapped[str] = mapped_column(String(200), default="")
+    #: Deduplication similarity key for this cluster, taken from the report that
+    #: created it. Stable on purpose: a cluster's identity should not drift as
+    #: more reports join it.
+    match_text: Mapped[str] = mapped_column(Text, default="")
     category: Mapped[str] = mapped_column(String(48), index=True)
     sub_issue: Mapped[str] = mapped_column(String(120), default="")
     status: Mapped[str] = mapped_column(String(24), default="received", index=True)
@@ -197,6 +201,8 @@ class Report(Base):
     redacted_text: Mapped[str] = mapped_column(Text, default="")
     redaction_summary: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     summary_en: Mapped[str] = mapped_column(Text, default="")
+    #: Deduplication similarity key - machine-facing, never displayed.
+    match_text: Mapped[str] = mapped_column(Text, default="")
     language: Mapped[str] = mapped_column(String(12), default="unknown", index=True)
     language_confidence: Mapped[float] = mapped_column(Float, default=0.0)
 

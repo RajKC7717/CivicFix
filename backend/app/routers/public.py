@@ -7,6 +7,7 @@ the neutral English title.
 
 from __future__ import annotations
 
+import json
 import statistics
 from datetime import datetime, timedelta, timezone
 
@@ -131,9 +132,13 @@ def policy_document() -> dict:
 def public_stats(db: Session = Depends(get_db)) -> dict:
     """City-wide counters for the citizen homepage."""
     total_reports = db.execute(select(func.count(Report.id))).scalar_one()
-    total_issues = db.execute(select(func.count(Issue.id))).scalar_one()
+    total_issues = db.execute(
+        select(func.count(Issue.id)).where(Issue.merged_into_id.is_(None))
+    ).scalar_one()
     resolved_issues = db.execute(
-        select(func.count(Issue.id)).where(Issue.status == "resolved")
+        select(func.count(Issue.id)).where(
+            Issue.status == "resolved", Issue.merged_into_id.is_(None)
+        )
     ).scalar_one()
     distinct_citizens = db.execute(
         select(func.count(func.distinct(Report.reporter_ref))).where(Report.reporter_ref != "")
@@ -141,7 +146,9 @@ def public_stats(db: Session = Depends(get_db)) -> dict:
 
     durations: list[float] = []
     for created_at, resolved_at in db.execute(
-        select(Issue.created_at, Issue.resolved_at).where(Issue.resolved_at.is_not(None))
+        select(Issue.created_at, Issue.resolved_at).where(
+            Issue.resolved_at.is_not(None), Issue.merged_into_id.is_(None)
+        )
     ).all():
         start, end = _aware(created_at), _aware(resolved_at)
         if start and end:
@@ -150,14 +157,16 @@ def public_stats(db: Session = Depends(get_db)) -> dict:
     by_category = [
         {"category": category, "count": count}
         for category, count in db.execute(
-            select(Issue.category, func.count(Issue.id)).group_by(Issue.category)
+            select(Issue.category, func.count(Issue.id))
+            .where(Issue.merged_into_id.is_(None))
+            .group_by(Issue.category)
         ).all()
     ]
     by_band = {
         band: count
         for band, count in db.execute(
             select(Issue.priority_band, func.count(Issue.id))
-            .where(Issue.status != "resolved")
+            .where(Issue.status != "resolved", Issue.merged_into_id.is_(None))
             .group_by(Issue.priority_band)
         ).all()
     }
@@ -197,7 +206,9 @@ def public_map(
     db: Session = Depends(get_db),
 ) -> dict:
     """Anonymised open issues for the public map."""
-    query = select(Issue).where(Issue.lat.is_not(None), Issue.lon.is_not(None))
+    query = select(Issue).where(
+        Issue.lat.is_not(None), Issue.lon.is_not(None), Issue.merged_into_id.is_(None)
+    )
     if status:
         query = query.where(Issue.status == status)
     elif status is None:
@@ -237,13 +248,31 @@ def public_issue(issue_code: str, db: Session = Depends(get_db)) -> dict:
     return {"found": True, "issue": issue_summary(issue)}
 
 
+@router.get("/public/wards.geojson")
+def ward_geometry() -> dict:
+    """Ward boundary polygons for the map.
+
+    Served from the API rather than copied into the frontend bundle so there is
+    exactly one ward definition in the project. Replacing data/wards.geojson
+    with licensed real boundaries changes the map with no rebuild.
+    """
+    from app.services.bootstrap import WARDS_GEOJSON
+
+    if not WARDS_GEOJSON.exists():
+        return {"type": "FeatureCollection", "features": [], "error": "wards.geojson not generated"}
+    try:
+        return json.loads(WARDS_GEOJSON.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {"type": "FeatureCollection", "features": []}
+
+
 @router.get("/public/wards")
 def public_wards(db: Session = Depends(get_db)) -> dict:
     """Ward list with live open-issue counts, for filters and the equity view."""
     counts = dict(
         db.execute(
             select(Issue.ward_id, func.count(Issue.id))
-            .where(Issue.status != "resolved")
+            .where(Issue.status != "resolved", Issue.merged_into_id.is_(None))
             .group_by(Issue.ward_id)
         ).all()
     )

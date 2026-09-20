@@ -130,6 +130,9 @@ def _enrich(reading: Understanding, text: str) -> Understanding:
         reading.summary_en = analysis.summary_en
 
     reading.matched_terms = analysis.matched_terms
+    # The match key is always derived deterministically, even on the LLM path:
+    # deduplication must not shift because a model phrased a summary differently.
+    reading.match_text = analysis.match_text or reading.summary_en
     if notes:
         reading.explanation = "; ".join(filter(None, [reading.explanation, *notes]))
     return reading

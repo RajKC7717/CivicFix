@@ -16,9 +16,10 @@ A candidate must first pass three hard gates: same category, within
 ``radius_m``, reported within ``window_days``. Anything else is never compared,
 which keeps false merges rare and the query cheap.
 
-Surviving candidates are scored::
+Surviving candidates are scored on a *match key* rather than on the display
+title - ``lexicon.build_match_text`` explains why the two differ::
 
-    similarity = w_text * cosine(summary_en) + w_distance * proximity + w_time * recency
+    similarity = w_text * cosine(match_text) + w_distance * proximity + w_time * recency
 
 against thresholds in ``priority_config.yaml``:
 
@@ -108,7 +109,7 @@ def find_candidates(
     db: Session,
     *,
     category: str,
-    summary_en: str,
+    match_text: str,
     lat: float | None,
     lon: float | None,
     created_at: datetime | None = None,
@@ -165,7 +166,12 @@ def find_candidates(
     geo_filtered = geo_filtered[:max_candidates]
 
     embedder = get_embedder()
-    texts = [summary_en or ""] + [(issue.title or "") for issue, _ in geo_filtered]
+    # Compare match keys, not titles. See lexicon.build_match_text: a title is
+    # written for an officer to read, a match key for a machine to compare.
+    # Older rows may predate the column, so fall back to the title.
+    texts = [match_text or ""] + [
+        (issue.match_text or issue.title or "") for issue, _ in geo_filtered
+    ]
     vectors = embedder.encode(texts)
     text_scores = similarity(vectors[0], vectors[1:])[0]
 
@@ -214,7 +220,7 @@ def decide(
     db: Session,
     *,
     category: str,
-    summary_en: str,
+    match_text: str,
     lat: float | None,
     lon: float | None,
     created_at: datetime | None = None,
@@ -224,16 +230,19 @@ def decide(
     auto_threshold = float(config["auto_merge_threshold"])
     review_threshold = float(config["review_threshold"])
 
-    if not (summary_en or "").strip():
+    if not (match_text or "").strip():
         return DedupDecision(
             decision="new",
-            explanation="No English summary could be produced, so no reliable comparison was possible.",
+            explanation=(
+                "Nothing recognisable could be extracted from this complaint, so no "
+                "reliable comparison against existing issues was possible."
+            ),
         )
 
     candidates = find_candidates(
         db,
         category=category,
-        summary_en=summary_en,
+        match_text=match_text,
         lat=lat,
         lon=lon,
         created_at=created_at,
