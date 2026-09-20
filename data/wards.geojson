@@ -1,0 +1,549 @@
+{
+ "type": "FeatureCollection",
+ "name": "nagarnetra_synthetic_wards",
+ "disclaimer": "SYNTHETIC BOUNDARIES. Voronoi tessellation of real Pune locality centroids, clipped to the city bounding box. Not PMC electoral wards.",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+  }
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "code": "W01",
+    "name": "Shivajinagar",
+    "zone": "Central",
+    "population": 198000,
+    "area_sq_km": 20.29,
+    "centroid_lat": 18.5308,
+    "centroid_lon": 73.8478,
+    "boundary_source": "synthetic-voronoi"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       73.83363562184768,
+       18.50901395572259
+      ],
+      [
+       73.81948158974656,
+       18.533269369707835
+      ],
+      [
+       73.84539649444355,
+       18.57039568707514
+      ],
+      [
+       73.8743833223376,
+       18.524188961422265
+      ],
+      [
+       73.83363562184768,
+       18.50901395572259
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "code": "W02",
+    "name": "Swargate",
+    "zone": "Central",
+    "population": 176000,
+    "area_sq_km": 24.26,
+    "centroid_lat": 18.5018,
+    "centroid_lon": 73.8586,
+    "boundary_source": "synthetic-voronoi"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       73.87343606835424,
+       18.481762939549068
+      ],
+      [
+       73.8392766557526,
+       18.474745994748275
+      ],
+      [
+       73.83199072788537,
+       18.49406304452958
+      ],
+      [
+       73.83363562184766,
+       18.509013955722587
+      ],
+      [
+       73.87438332233758,
+       18.524188961422265
+      ],
+      [
+       73.89108053246697,
+       18.516926353764365
+      ],
+      [
+       73.89293647007838,
+       18.499308016439088
+      ],
+      [
+       73.87343606835424,
+       18.481762939549068
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "code": "W03",
+    "name": "Kothrud",
+    "zone": "West",
+    "population": 312000,
+    "area_sq_km": 33.58,
+    "centroid_lat": 18.5074,
+    "centroid_lon": 73.8077,
+    "boundary_source": "synthetic-voronoi"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       73.79709999999999,
+       18.533139244186046
+      ],
+      [
+       73.81948158974656,
+       18.533269369707828
+      ],
+      [
+       73.83363562184766,
+       18.509013955722605
+      ],
+      [
+       73.83199072788535,
+       18.49406304452955
+      ],
+      [
+       73.7107277108232,
+       18.497928001248653
+      ],
+      [
+       73.71127371543261,
+       18.49837627233608
+      ],
+      [
+       73.79709999999999,
+       18.533139244186046
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "code": "W04",
+    "name": "Warje",
+    "zone": "West",
+    "population": 164000,
+    "area_sq_km": 141.62,
+    "centroid_lat": 18.4823,
+    "centroid_lon": 73.8069,
+    "boundary_source": "synthetic-voronoi"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       73.83199072788538,
+       18.49406304452955
+      ],
+      [
+       73.83927665575258,
+       18.474745994748286
+      ],
+      [
+       73.80878815789474,
+       18.4
+      ],
+      [
+       73.7,
+       18.4
+      ],
+      [
+       73.7,
+       18.49122933884298
+      ],
+      [
+       73.7107277108232,
+       18.497928001248653
+      ],
+      [
+       73.83199072788538,
+       18.49406304452955
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "code": "W05",
+    "name": "Katraj",
+    "zone": "South",
+    "population": 228000,
+    "area_sq_km": 56.5,
+    "centroid_lat": 18.4575,
+    "centroid_lon": 73.8677,
+    "boundary_source": "synthetic-voronoi"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       73.87343606835422,
+       18.481762939549068
+      ],
+      [
+       73.89854170124481,
+       18.4
+      ],
+      [
+       73.80878815789474,
+       18.4
+      ],
+      [
+       73.83927665575258,
+       18.474745994748275
+      ],
+      [
+       73.87343606835422,
+       18.481762939549068
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "code": "W06",
+    "name": "Kondhwa",
+    "zone": "South",
+    "population": 289000,
+    "area_sq_km": 75.18,
+    "centroid_lat": 18.4649,
+    "centroid_lon": 73.8918,
+    "boundary_source": "synthetic-voronoi"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       73.89854170124481,
+       18.4
+      ],
+      [
+       73.87343606835424,
+       18.481762939549057
+      ],
+      [
+       73.89293647007838,
+       18.499308016439077
+      ],
+      [
+       73.98,
+       18.43163590909091
+      ],
+      [
+       73.98,
+       18.4
+      ],
+      [
+       73.89854170124481,
+       18.4
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "code": "W07",
+    "name": "Hadapsar",
+    "zone": "East",
+    "population": 341000,
+    "area_sq_km": 102.9,
+    "centroid_lat": 18.5089,
+    "centroid_lon": 73.926,
+    "boundary_source": "synthetic-voronoi"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       73.98,
+       18.43163590909091
+      ],
+      [
+       73.89293647007837,
+       18.499308016439084
+      ],
+      [
+       73.89108053246696,
+       18.516926353764376
+      ],
+      [
+       73.98,
+       18.61408301662711
+      ],
+      [
+       73.98,
+       18.43163590909091
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "code": "W08",
+    "name": "Yerawada",
+    "zone": "East",
+    "population": 207000,
+    "area_sq_km": 150.01,
+    "centroid_lat": 18.551,
+    "centroid_lon": 73.88,
+    "boundary_source": "synthetic-voronoi"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       73.98,
+       18.61408301662711
+      ],
+      [
+       73.89108053246696,
+       18.516926353764372
+      ],
+      [
+       73.8743833223376,
+       18.524188961422265
+      ],
+      [
+       73.84539649444353,
+       18.57039568707514
+      ],
+      [
+       73.84879026108578,
+       18.601194119353476
+      ],
+      [
+       73.87910593126387,
+       18.66
+      ],
+      [
+       73.98,
+       18.66
+      ],
+      [
+       73.98,
+       18.61408301662711
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "code": "W09",
+    "name": "Aundh",
+    "zone": "North-West",
+    "population": 152000,
+    "area_sq_km": 26.17,
+    "centroid_lat": 18.559,
+    "centroid_lon": 73.8074,
+    "boundary_source": "synthetic-voronoi"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       73.84879026108578,
+       18.601194119353508
+      ],
+      [
+       73.84539649444353,
+       18.57039568707514
+      ],
+      [
+       73.81948158974656,
+       18.533269369707828
+      ],
+      [
+       73.7971,
+       18.533139244186046
+      ],
+      [
+       73.7971,
+       18.57756428571429
+      ],
+      [
+       73.84879026108578,
+       18.601194119353508
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "code": "W10",
+    "name": "Baner",
+    "zone": "North-West",
+    "population": 186000,
+    "area_sq_km": 37.76,
+    "centroid_lat": 18.559,
+    "centroid_lon": 73.7868,
+    "boundary_source": "synthetic-voronoi"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       73.7971,
+       18.577564285714285
+      ],
+      [
+       73.7971,
+       18.53313924418605
+      ],
+      [
+       73.71127371543261,
+       18.49837627233609
+      ],
+      [
+       73.76612889990983,
+       18.579977618188845
+      ],
+      [
+       73.7971,
+       18.577564285714285
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "code": "W11",
+    "name": "Wakad",
+    "zone": "PCMC-fringe",
+    "population": 243000,
+    "area_sq_km": 86.96,
+    "centroid_lat": 18.5975,
+    "centroid_lon": 73.7898,
+    "boundary_source": "synthetic-voronoi"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       73.8487902610858,
+       18.601194119353515
+      ],
+      [
+       73.79709999999999,
+       18.577564285714285
+      ],
+      [
+       73.76612889990983,
+       18.579977618188842
+      ],
+      [
+       73.75622436149312,
+       18.66
+      ],
+      [
+       73.87910593126387,
+       18.66
+      ],
+      [
+       73.8487902610858,
+       18.601194119353515
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "code": "W12",
+    "name": "Hinjewadi",
+    "zone": "PCMC-fringe",
+    "population": 171000,
+    "area_sq_km": 94.43,
+    "centroid_lat": 18.5912,
+    "centroid_lon": 73.7389,
+    "boundary_source": "synthetic-voronoi"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       73.7,
+       18.66
+      ],
+      [
+       73.75622436149312,
+       18.66
+      ],
+      [
+       73.76612889990983,
+       18.579977618188845
+      ],
+      [
+       73.7112737154326,
+       18.498376272336063
+      ],
+      [
+       73.7,
+       18.49122933884298
+      ],
+      [
+       73.7,
+       18.66
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

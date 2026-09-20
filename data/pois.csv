@@ -1,0 +1,62 @@
+name,kind,lat,lon,ward_code
+Katraj Dairy Road Municipal School,school,18.45862,73.8679,W05
+"Zilla Parishad School, Shivajinagar",school,18.52055,73.83618,W01
+Shivajinagar Vidya Mandir,school,18.524297,73.847935,W01
+Shivajinagar Municipal School,school,18.523236,73.836667,W01
+Shivajinagar Municipal Hospital,hospital,18.528227,73.853168,W01
+Shivajinagar Primary Health Centre,hospital,18.537875,73.840372,W01
+"Zilla Parishad School, Swargate",school,18.507769,73.86346,W02
+Swargate Vidya Mandir,school,18.507076,73.863771,W02
+Swargate Municipal School,school,18.504481,73.851426,W02
+Swargate Municipal Hospital,hospital,18.503831,73.857623,W02
+Swargate Primary Health Centre,hospital,18.495064,73.866069,W02
+Kothrud English Medium School,school,18.498394,73.803453,W03
+"Zilla Parishad School, Kothrud",school,18.501424,73.803767,W03
+Kothrud Vidya Mandir,school,18.505562,73.816912,W03
+Kothrud Maternity Home,hospital,18.515383,73.816672,W03
+Kothrud Municipal Hospital,hospital,18.502414,73.812432,W03
+Warje Vidya Mandir,school,18.489318,73.799187,W04
+Warje Municipal School,school,18.479345,73.806507,W04
+Warje English Medium School,school,18.488798,73.799097,W04
+Warje Maternity Home,hospital,18.485978,73.807897,W04
+Warje Municipal Hospital,hospital,18.480295,73.800036,W04
+Katraj Municipal School,school,18.462881,73.87457,W05
+Katraj English Medium School,school,18.447453,73.864506,W05
+"Zilla Parishad School, Katraj",school,18.446473,73.875543,W05
+Katraj Primary Health Centre,hospital,18.46709,73.866948,W05
+Katraj Maternity Home,hospital,18.465203,73.863123,W05
+Kondhwa English Medium School,school,18.472946,73.890096,W06
+"Zilla Parishad School, Kondhwa",school,18.473695,73.880737,W06
+Kondhwa Vidya Mandir,school,18.455518,73.902126,W06
+Kondhwa Primary Health Centre,hospital,18.469899,73.884153,W06
+Kondhwa Maternity Home,hospital,18.466481,73.893625,W06
+Hadapsar Municipal School,school,18.502216,73.93789,W07
+Hadapsar English Medium School,school,18.512402,73.924926,W07
+"Zilla Parishad School, Hadapsar",school,18.506408,73.932126,W07
+Hadapsar Primary Health Centre,hospital,18.501699,73.916645,W07
+Hadapsar Maternity Home,hospital,18.501871,73.928818,W07
+Yerawada Vidya Mandir,school,18.548851,73.891526,W08
+Yerawada Municipal School,school,18.557535,73.875484,W08
+Yerawada English Medium School,school,18.562063,73.880354,W08
+Yerawada Primary Health Centre,hospital,18.558992,73.888255,W08
+Yerawada Maternity Home,hospital,18.549501,73.876128,W08
+Aundh Municipal School,school,18.569222,73.79946,W09
+Aundh English Medium School,school,18.556536,73.809196,W09
+"Zilla Parishad School, Aundh",school,18.566609,73.819326,W09
+Aundh Maternity Home,hospital,18.554997,73.807244,W09
+Aundh Municipal Hospital,hospital,18.552688,73.807034,W09
+"Zilla Parishad School, Baner",school,18.561532,73.775321,W10
+Baner Vidya Mandir,school,18.558137,73.781087,W10
+Baner Municipal School,school,18.559928,73.786865,W10
+Baner Maternity Home,hospital,18.558945,73.795547,W10
+Baner Municipal Hospital,hospital,18.556771,73.783034,W10
+Wakad Municipal School,school,18.599524,73.780253,W11
+Wakad English Medium School,school,18.604059,73.791366,W11
+"Zilla Parishad School, Wakad",school,18.601208,73.785818,W11
+Wakad Maternity Home,hospital,18.587956,73.784788,W11
+Wakad Municipal Hospital,hospital,18.594555,73.795698,W11
+Hinjewadi English Medium School,school,18.593838,73.740158,W12
+"Zilla Parishad School, Hinjewadi",school,18.590891,73.749692,W12
+Hinjewadi Vidya Mandir,school,18.589303,73.748663,W12
+Hinjewadi Maternity Home,hospital,18.588399,73.739221,W12
+Hinjewadi Municipal Hospital,hospital,18.600363,73.746709,W12

@@ -1,0 +1,5 @@
+# OPTIONAL upgrade path - NOT required. See docs/DISCLOSURES.md.
+# Installing this swaps the deterministic offline embedder for a neural
+# multilingual sentence encoder. Costs ~3 GB of disk (PyTorch).
+# The app auto-detects it at runtime; no code change is needed.
+sentence-transformers==3.3.1

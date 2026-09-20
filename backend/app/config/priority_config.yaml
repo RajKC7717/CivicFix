@@ -1,0 +1,144 @@
+# =============================================================================
+#  NagarNetra - Priority, SLA and Deduplication policy
+# =============================================================================
+#  THIS FILE IS THE WHOLE SCORING POLICY. There is no hidden model.
+#
+#  The AI only *extracts features* from a complaint (what kind of issue it is,
+#  how severe it looks, which hazards are mentioned). The priority number an
+#  officer sees is computed from those features by the plain arithmetic below,
+#  so any officer, auditor, councillor or journalist can reproduce a score by
+#  hand and challenge it.
+#
+#  Editing this file changes the city's triage policy. It is deliberately the
+#  only place where that can happen. Changes take effect on the next restart.
+# =============================================================================
+
+version: 1
+policy_owner: "Municipal Grievance Cell"
+last_reviewed: "2026-09-20"
+
+priority:
+  max_score: 100
+
+  # ---- 1. How bad is it? (AI-extracted severity, 1..5) --------------------
+  severity:
+    points_per_level: 8        # severity 4 -> 4 x 8 = +32
+    max_points: 40
+
+  # ---- 2. What could go wrong? (hazard flags) -----------------------------
+  # Ordered by how irreversible the harm is. A live wire can kill today;
+  # an encroached footpath cannot.
+  hazards:
+    points:
+      live_wire: 25
+      open_manhole: 20
+      flooding: 15
+      accident_risk: 12
+      near_school: 10
+      near_hospital: 10
+      health_risk: 8
+    max_points: 35             # a complaint cannot be all-hazard
+
+  # ---- 3. How many people are affected? -----------------------------------
+  # Log-scaled on purpose: the 2nd report is strong evidence the issue is real,
+  # the 50th adds little new information. This also makes the score resistant
+  # to a single organised group brigading one street.
+  #   points = weight x log10(1 + report_count)
+  #   1 report -> +4.2 | 9 reports -> +14.0 | 50 reports -> +23.9 (capped)
+  cluster:
+    weight: 14
+    max_points: 22
+
+  # ---- 4. Is it about to breach its SLA? ----------------------------------
+  # Rises smoothly as the deadline approaches so that old, unglamorous
+  # complaints cannot be starved forever by a stream of new dramatic ones.
+  #   points = weight x min(1, elapsed_hours / sla_hours) (+ breach_bonus)
+  sla_pressure:
+    weight: 12
+    breach_bonus: 6
+
+  # ---- 5. Who is nearby? (verified from map data, not from the text) ------
+  # Skipped when the equivalent hazard flag already fired, so a complaint is
+  # never charged twice for the same school.
+  vulnerable_location:
+    radius_m: 200
+    points:
+      school: 10
+      hospital: 10
+    max_points: 12
+
+  # ---- 6. Equity correction (SDG 16) --------------------------------------
+  # A small, visible, switchable boost for wards the equity audit currently
+  # flags as under-served. It is capped low on purpose: it nudges a queue,
+  # it does not override a live wire. Officers can turn it off in the UI and
+  # the toggle is written to the audit log.
+  equity:
+    enabled: true
+    points: 6
+    underserved_ratio: 1.5          # median resolution time >= 1.5x city median
+    underserved_breach_margin: 0.15 # or SLA breach rate >= city rate + 15pp
+    min_resolved_sample: 3          # never flag a ward on 1-2 data points
+
+# Band cut-offs, inclusive lower bound.
+bands:
+  P1: 75      # Critical  - act today
+  P2: 55      # High      - act this week
+  P3: 35      # Medium    - scheduled
+  P4: 0       # Low       - monitor
+
+# =============================================================================
+#  SLA policy: hours from report to resolution, per category.
+# =============================================================================
+sla:
+  default_hours: 96
+  by_category:
+    pothole_road: 72
+    garbage_waste: 48
+    streetlight: 72
+    drainage_sewage: 36
+    water_supply: 24
+    stray_animals: 48
+    encroachment_illegal_parking: 96
+    tree_fall_hazard: 24
+    other: 96
+  # A hazard can shorten (never lengthen) the deadline. The tightest wins.
+  hazard_overrides:
+    live_wire: 4
+    flooding: 12
+    open_manhole: 24
+    accident_risk: 24
+
+# =============================================================================
+#  Deduplication policy - "one issue, many voices"
+# =============================================================================
+#  A new report is compared only against OPEN issues that are in the same
+#  category, within `radius_m`, and reported within `window_days`. Everything
+#  else is never even a candidate, which keeps false merges rare and the
+#  comparison cheap.
+#
+#  similarity = w_text x cosine(summary_en) + w_distance x proximity + w_time x recency
+#
+#  >= auto_merge_threshold : joined automatically, citizen is told how many
+#                            others reported it
+#  >= review_threshold     : sent to a HUMAN with both reports side by side
+#  <  review_threshold     : becomes a new issue
+#
+#  No report is ever deleted or rejected at any threshold.
+# =============================================================================
+dedup:
+  radius_m: 150
+  window_days: 14
+  weights:
+    text: 0.60
+    distance: 0.30
+    time: 0.10
+  auto_merge_threshold: 0.78
+  review_threshold: 0.60
+  max_candidates: 25
+
+# =============================================================================
+#  When do we stop trusting the AI and ask a human?
+# =============================================================================
+confidence:
+  review_category_below: 0.55   # low-confidence classification -> review queue
+  trust_officer: 1.0            # an officer's decision is never second-guessed
