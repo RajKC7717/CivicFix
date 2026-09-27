@@ -194,6 +194,15 @@ def issue_detail(
 ) -> dict:
     """Everything known about one issue, including how the AI got there."""
     issue = _get_issue(db, identifier)
+    
+    # Track first acknowledgment
+    if issue.first_viewed_at is None:
+        issue.first_viewed_at = datetime.now(timezone.utc)
+        issue.first_viewed_by = officer.username
+        if issue.ack_status in ("pending", "expired"):
+            issue.ack_status = "acknowledged"
+        db.commit()
+
     reports = db.execute(
         select(Report).where(Report.issue_id == issue.id).order_by(Report.created_at.asc())
     ).scalars().all()

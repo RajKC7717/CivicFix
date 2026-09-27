@@ -157,6 +157,19 @@ class Issue(Base, TimestampMixin):
     resolved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     resolution_note: Mapped[str] = mapped_column(Text, default="")
 
+    # --- acknowledgment window ---
+    ack_window_hours: Mapped[int] = mapped_column(Integer, default=24)
+    ack_deadline: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    ack_status: Mapped[str] = mapped_column(
+        String(16), default="pending", index=True
+    )  # pending|acknowledged|expired
+    first_viewed_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    first_viewed_by: Mapped[str | None] = mapped_column(String(80), nullable=True)
+
     #: Set when an officer merges this issue into another one. The row is kept
     #: forever - merging is a link, never a delete - but a merged issue is
     #: excluded from every queue, map, metric and dedup candidate search.
@@ -387,4 +400,39 @@ class EvalRun(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     label: Mapped[str] = mapped_column(String(64), default="holdout")
     report: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class EmailLog(Base):
+    """Record of complaint emails sent on behalf of citizens."""
+
+    __tablename__ = "email_logs"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    report_id: Mapped[int] = mapped_column(ForeignKey("reports.id"), index=True)
+    ticket_code: Mapped[str] = mapped_column(String(24), index=True)
+    to_email: Mapped[str] = mapped_column(String(200))
+    from_email: Mapped[str] = mapped_column(String(200), default="")
+    reply_to: Mapped[str] = mapped_column(String(200), default="")
+    subject: Mapped[str] = mapped_column(String(300))
+    body: Mapped[str] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(String(16), default="demo")  # sent|failed|demo
+    error_message: Mapped[str] = mapped_column(Text, default="")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class Notification(Base):
+    """Citizen-facing notification linked to a ticket code."""
+
+    __tablename__ = "notifications"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    ticket_code: Mapped[str] = mapped_column(String(24), index=True)
+    issue_id: Mapped[int | None] = mapped_column(
+        ForeignKey("issues.id"), nullable=True, index=True
+    )
+    kind: Mapped[str] = mapped_column(String(32), index=True)  # ack_expired|status_change|email_sent
+    title: Mapped[str] = mapped_column(String(200))
+    message: Mapped[str] = mapped_column(Text, default="")
+    read: Mapped[bool] = mapped_column(Boolean, default=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)

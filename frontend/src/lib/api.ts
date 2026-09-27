@@ -143,6 +143,22 @@ export const api = {
       { method: 'POST', body: JSON.stringify(body) },
     ),
 
+  emailDraft: (ticket: string) =>
+    request<EmailDraftResponse>(`/api/complaints/${encodeURIComponent(ticket)}/email-draft`),
+  sendEmail: (ticket: string, body: { to_email: string; subject: string; body: string; citizen_email: string }) => {
+    const form = new FormData()
+    form.append('to_email', body.to_email)
+    form.append('subject', body.subject)
+    form.append('body', body.body)
+    form.append('citizen_email', body.citizen_email)
+    return request<{ ok: boolean; status: string; message: string }>(
+      `/api/complaints/${encodeURIComponent(ticket)}/send-email`,
+      { method: 'POST', body: form },
+    )
+  },
+  notifications: (ticket: string) =>
+    request<{ items: NotificationItem[] }>(`/api/complaints/${encodeURIComponent(ticket)}/notifications`),
+
   // -------------------------------------------------------------------------
   //  Auth
   // -------------------------------------------------------------------------

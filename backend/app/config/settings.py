@@ -68,6 +68,15 @@ class Settings(BaseSettings):
     city_bbox_max_lon: float = 73.9800
     city_bbox_max_lat: float = 18.6600
 
+    # --- email / SMTP -------------------------------------------------------
+    smtp_enabled: bool = False
+    smtp_host: str = "smtp.gmail.com"
+    smtp_port: int = 587
+    smtp_user: str = ""
+    smtp_password: str = ""
+    smtp_from_name: str = "NagarNetra Citizen Portal"
+    smtp_from_email: str = "noreply@nagarnetra.local"
+
     # --- behaviour ------------------------------------------------------
     demo_mode: bool = True
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173"

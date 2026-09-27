@@ -224,6 +224,17 @@ def track_complaint(ticket_code: str, db: Session = Depends(get_db)) -> dict:
         ),
         "feedback_given": feedback_given,
         "pipeline_status": report.pipeline_status,
+        "ack": (
+            {
+                "status": issue.ack_status,
+                "deadline": issue.ack_deadline.isoformat() if issue.ack_deadline else None,
+                "window_hours": issue.ack_window_hours,
+                "viewed_at": issue.first_viewed_at.isoformat() if issue.first_viewed_at else None,
+                "viewed_by": issue.first_viewed_by,
+            }
+            if issue is not None
+            else None
+        ),
     }
 
 
@@ -261,3 +272,74 @@ def submit_feedback(
     )
     db.commit()
     return {"ok": True, "message": "Thank you - your rating helps hold the department to account."}
+
+
+@router.get("/complaints/{ticket_code}/email-draft")
+def get_email_draft(ticket_code: str, db: Session = Depends(get_db)) -> dict:
+    """Generate a complaint email draft for the citizen."""
+    report = _load_report(db, ticket_code)
+    if report.issue_id is None:
+        raise HTTPException(status_code=409, detail="This complaint has not been triaged yet.")
+    issue = db.get(Issue, report.issue_id)
+    if issue is None:
+        raise HTTPException(status_code=404, detail="Issue not found.")
+    from app.services.email_service import draft_complaint_email
+
+    return draft_complaint_email(report, issue)
+
+
+@router.post("/complaints/{ticket_code}/send-email")
+def send_complaint_email(
+    ticket_code: str,
+    to_email: str = Form(default=""),
+    subject: str = Form(default=""),
+    body: str = Form(default=""),
+    citizen_email: str = Form(default=""),
+    db: Session = Depends(get_db),
+) -> dict:
+    """Send (or record in demo mode) a complaint email."""
+    report = _load_report(db, ticket_code)
+    if not to_email or not subject or not body:
+        raise HTTPException(
+            status_code=422, detail="Email recipient, subject and body are required."
+        )
+    from app.services.email_service import send_email
+
+    return send_email(
+        db,
+        report=report,
+        to_email=to_email.strip(),
+        subject=subject.strip()[:300],
+        body=body.strip(),
+        citizen_email=citizen_email.strip()[:200],
+    )
+
+
+@router.get("/complaints/{ticket_code}/notifications")
+def get_notifications(ticket_code: str, db: Session = Depends(get_db)) -> dict:
+    """Get notifications for a citizen ticket."""
+    _load_report(db, ticket_code)  # validates ticket exists
+    from app.models import Notification
+
+    notifications = (
+        db.execute(
+            select(Notification)
+            .where(Notification.ticket_code == ticket_code.strip().upper())
+            .order_by(Notification.created_at.desc())
+        )
+        .scalars()
+        .all()
+    )
+    return {
+        "items": [
+            {
+                "id": n.id,
+                "kind": n.kind,
+                "title": n.title,
+                "message": n.message,
+                "read": n.read,
+                "created_at": n.created_at.isoformat() if n.created_at else None,
+            }
+            for n in notifications
+        ]
+    }

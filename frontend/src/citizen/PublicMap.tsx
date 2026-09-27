@@ -13,6 +13,7 @@ export default function PublicMap() {
   const [meta, setMeta] = useState<Meta | null>(null)
   const [items, setItems] = useState<MapItem[] | null>(null)
   const [category, setCategory] = useState('')
+  const [showExpired, setShowExpired] = useState(false)
   const wards = useWardGeometry()
 
   useEffect(() => {
@@ -32,6 +33,12 @@ export default function PublicMap() {
     for (const item of items ?? []) tally[item.band] = (tally[item.band] ?? 0) + 1
     return tally
   }, [items])
+
+  const visibleItems = useMemo(() => {
+    if (!items) return []
+    if (showExpired) return items
+    return items.filter(i => !i.ack_expired)
+  }, [items, showExpired])
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-6">
@@ -57,13 +64,28 @@ export default function PublicMap() {
         </Select>
       </div>
 
-      <div className="flex flex-wrap gap-2 mt-4">
-        {(['P1', 'P2', 'P3', 'P4'] as Band[]).map((band) => (
-          <Badge key={band} tone="neutral" className="gap-1.5">
-            <span className="h-2 w-2 rounded-full" style={{ background: BAND_HEX[band] }} />
-            {band} · {counts[band] ?? 0}
-          </Badge>
-        ))}
+      <div className="flex flex-wrap items-center justify-between gap-4 mt-4">
+        <div className="flex flex-wrap gap-2">
+          {(['P1', 'P2', 'P3', 'P4'] as Band[]).map((band) => (
+            <Badge key={band} tone="neutral" className="gap-1.5">
+              <span className="h-2 w-2 rounded-full" style={{ background: BAND_HEX[band] }} />
+              {band} · {counts[band] ?? 0}
+            </Badge>
+          ))}
+        </div>
+        
+        <label className="flex items-center gap-2 text-sm text-ink-700 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={showExpired}
+            onChange={(e) => setShowExpired(e.target.checked)}
+            className="rounded border-ink-300 text-accent-500 focus:ring-accent-500"
+          />
+          <span className="flex items-center gap-1.5">
+            <span className="h-2 w-2 rounded-full bg-ink-300" />
+            Show expired ({items?.filter(i => i.ack_expired).length ?? 0})
+          </span>
+        </label>
       </div>
 
       <Card className="mt-4 p-1 overflow-hidden">
@@ -72,7 +94,7 @@ export default function PublicMap() {
         ) : (
           <MapView className="h-[520px]" zoom={11}>
             {wards && <WardBoundaries data={wards} showLabels />}
-            <IssueMarkers items={items} />
+            <IssueMarkers items={visibleItems} />
           </MapView>
         )}
       </Card>

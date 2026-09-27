@@ -156,3 +156,27 @@ dedup:
 confidence:
   review_category_below: 0.55   # low-confidence classification -> review queue
   trust_officer: 1.0            # an officer's decision is never second-guessed
+
+# =============================================================================
+#  Acknowledgment window: hours until an officer should first review
+# =============================================================================
+# Derived from SLA hours (~25% of target). If the window passes without an
+# officer opening the issue, the citizen receives a notification (the complaint
+# remains active and is never rejected).
+ack_window:
+  default: 24
+  by_category:
+    water_supply: 6
+    tree_fall_hazard: 6
+    drainage_sewage: 9
+    garbage_waste: 12
+    stray_animals: 12
+    pothole_road: 18
+    streetlight: 18
+    encroachment_illegal_parking: 24
+    other: 24
+  hazard_override:
+    live_wire: 1
+    flooding: 3
+    open_manhole: 6
+    accident_risk: 12

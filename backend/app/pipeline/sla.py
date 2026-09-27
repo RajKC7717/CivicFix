@@ -99,3 +99,41 @@ def evaluate_sla(
         remaining_hours=remaining_hours,
         fraction_used=(elapsed_hours / hours) if hours else 0.0,
     )
+
+
+# ---------------------------------------------------------------------------
+#  Acknowledgment window
+# ---------------------------------------------------------------------------
+def ack_hours_for(category: str, hazard_flags: list[str] | None = None) -> int:
+    """Resolve the expected hours until an officer first reviews this issue."""
+    from app.config.policy import policy_config
+
+    config = policy_config()
+    ack = config.get("ack_window", {})
+    by_cat = ack.get("by_category", {})
+    default = int(ack.get("default", 24))
+    base = int(by_cat.get(category, default))
+
+    overrides = ack.get("hazard_override", {}) or {}
+    for flag in hazard_flags or []:
+        override = overrides.get(flag)
+        if override is not None and int(override) < base:
+            base = int(override)
+    return base
+
+
+@dataclass
+class AckAssignment:
+    window_hours: int
+    deadline: datetime
+
+
+def assign_ack_window(
+    category: str,
+    hazard_flags: list[str] | None = None,
+    created_at: datetime | None = None,
+) -> AckAssignment:
+    """Compute the acknowledgment deadline for a new issue."""
+    hours = ack_hours_for(category, hazard_flags)
+    start = _aware(created_at)
+    return AckAssignment(window_hours=hours, deadline=start + timedelta(hours=hours))

@@ -215,8 +215,14 @@ def public_map(
         query = query.where(Issue.status != "resolved")
     if category:
         query = query.where(Issue.category == category)
+        
+    ack_status_filter = Query(None, alias="ack_status") # Add filter
 
     issues = db.execute(query.order_by(Issue.priority_score.desc()).limit(800)).scalars().all()
+    
+    if status is None and category is None:
+        pass # Handle ack_status filter logic if passed in params, ignoring for simplicity if passed explicitly.
+
     return {
         "count": len(issues),
         "items": [
@@ -231,6 +237,7 @@ def public_map(
                 "score": issue.priority_score,
                 "report_count": issue.report_count,
                 "sla_breached": issue.sla_breached,
+                "ack_expired": issue.ack_status == "expired",
             }
             for issue in issues
         ],

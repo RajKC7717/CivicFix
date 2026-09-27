@@ -29,6 +29,7 @@ import { useI18n } from '../i18n'
 import { ApiError, api } from '../lib/api'
 import { formatDateTime, slaLabel, timeAgo } from '../lib/format'
 import type { TrackResponse } from '../lib/types'
+import EmailDraft from './EmailDraft'
 
 function StarPicker({ value, onChange }: { value: number; onChange: (value: number) => void }) {
   return (
@@ -209,6 +210,74 @@ export default function Track() {
             )}
           </Card>
 
+          {/* Acknowledgment progress */}
+          {data.ack && (
+            <Card>
+              <CardHeader title={t('ack_title')} />
+              <div className="p-5">
+                {data.ack.status === 'pending' && data.ack.deadline && (
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <span className="h-7 w-7 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center shrink-0">
+                        <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <circle cx="12" cy="12" r="10" />
+                          <path d="M12 6v6l4 2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                      <div className="min-w-0">
+                        <p className="text-sm font-medium text-ink-800">{t('ack_pending')}</p>
+                        <p className="text-xs text-ink-500">
+                          ~{data.ack.window_hours} {t('ack_hours_remaining')}
+                        </p>
+                      </div>
+                    </div>
+                    {(() => {
+                      const deadline = new Date(data.ack.deadline).getTime()
+                      const created = new Date(data.report.created_at).getTime()
+                      const now = Date.now()
+                      const total = deadline - created
+                      const elapsed = now - created
+                      const pct = Math.min(100, Math.max(0, (elapsed / total) * 100))
+                      return (
+                        <div className="h-2 rounded-full bg-ink-100 overflow-hidden">
+                          <div
+                            className="h-full rounded-full bg-brand-500 transition-all"
+                            style={{ width: `${pct}%` }}
+                          />
+                        </div>
+                      )
+                    })()}
+                  </div>
+                )}
+
+                {data.ack.status === 'acknowledged' && (
+                  <div className="flex items-center gap-2">
+                    <span className="h-7 w-7 rounded-full bg-success-100 text-success-600 flex items-center justify-center shrink-0">
+                      <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                        <path d="m5 13 4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <div>
+                      <p className="text-sm font-medium text-success-700">{t('ack_acknowledged')}</p>
+                      {data.ack.viewed_by && (
+                        <p className="text-xs text-ink-500">
+                          {t('ack_reviewed_by')}: {data.ack.viewed_by}
+                          {data.ack.viewed_at && ` · ${formatDateTime(data.ack.viewed_at)}`}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {data.ack.status === 'expired' && (
+                  <Alert tone="warn" title={t('ack_expired_title')}>
+                    <p className="text-xs">{t('ack_expired_body')}</p>
+                  </Alert>
+                )}
+              </div>
+            </Card>
+          )}
+
           {/* Timeline */}
           <Card>
             <CardHeader title={t('track_timeline')} />
@@ -217,9 +286,15 @@ export default function Track() {
                 events={data.timeline}
                 currentStatus={data.issue?.status ?? 'received'}
                 labels={statusLabels}
+                ackHours={data.ack?.window_hours}
               />
             </div>
           </Card>
+
+          {/* Email draft */}
+          {data.report.ticket_code && (
+            <EmailDraft ticketCode={data.report.ticket_code} />
+          )}
 
           {/* Rating */}
           {data.can_give_feedback && (

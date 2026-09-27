@@ -29,16 +29,17 @@ const TILE_ERROR_LIMIT = 6
 // ---------------------------------------------------------------------------
 //  Icons
 // ---------------------------------------------------------------------------
-function bandIcon(band: Band, count: number, breached: boolean): L.DivIcon {
-  const colour = BAND_HEX[band] ?? BAND_HEX.P4
+function bandIcon(band: Band, count: number, breached: boolean, ack_expired?: boolean): L.DivIcon {
+  const colour = ack_expired ? '#94A3B8' : (BAND_HEX[band] ?? BAND_HEX.P4)
   const size = count > 1 ? 34 : 26
   const ring = breached ? `box-shadow:0 0 0 3px rgba(209,67,67,.35);` : ''
+  const innerHtml = ack_expired ? '⚠' : (count > 1 ? count : '')
   return L.divIcon({
     className: 'nn-marker',
     html: `<div style="width:${size}px;height:${size}px;border-radius:9999px;background:${colour};
       border:2.5px solid #fff;${ring}display:flex;align-items:center;justify-content:center;
-      color:#fff;font-size:${count > 1 ? 12 : 0}px;font-weight:700;font-family:Inter,sans-serif;
-      box-sizing:border-box;">${count > 1 ? count : ''}</div>`,
+      color:#fff;font-size:${count > 1 || ack_expired ? 12 : 0}px;font-weight:700;font-family:Inter,sans-serif;
+      box-sizing:border-box;">${innerHtml}</div>`,
     iconSize: [size, size],
     iconAnchor: [size / 2, size / 2],
   })
@@ -220,7 +221,7 @@ export function IssueMarkers({
         <Marker
           key={item.issue_code}
           position={[item.lat, item.lon]}
-          icon={bandIcon(item.band, item.report_count, item.sla_breached)}
+          icon={bandIcon(item.band, item.report_count, item.sla_breached, item.ack_expired)}
           eventHandlers={onSelect ? { click: () => onSelect(item.issue_code) } : undefined}
         >
           <Popup>

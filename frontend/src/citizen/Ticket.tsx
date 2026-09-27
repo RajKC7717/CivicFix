@@ -21,6 +21,7 @@ import { MapView, PinMarker } from '../components/MapView'
 import { useI18n } from '../i18n'
 import { formatDateTime } from '../lib/format'
 import type { SubmitResponse } from '../lib/types'
+import EmailDraft from './EmailDraft'
 
 function CopyableCode({ code, copyLabel, copiedLabel }: { code: string; copyLabel: string; copiedLabel: string }) {
   const [copied, setCopied] = useState(false)
@@ -222,6 +223,11 @@ export default function Ticket() {
             />
           </div>
         </Card>
+      )}
+
+      {/* Email draft */}
+      {result.ticket_code && (
+        <EmailDraft ticketCode={result.ticket_code} />
       )}
 
       {/* Location */}

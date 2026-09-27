@@ -77,6 +77,13 @@ export const BAND_HEX: Record<Band, string> = {
   P4: '#4F90D0',
 }
 
+export const EXPIRED_STYLE = {
+  bg: 'bg-ink-300',
+  text: 'text-ink-600',
+  border: 'border-ink-300',
+  hex: '#94A3B8',
+} as const
+
 export const STATUS_STYLES: Record<string, string> = {
   received: 'bg-ink-100 text-ink-700',
   verified: 'bg-brand-50 text-brand-700',

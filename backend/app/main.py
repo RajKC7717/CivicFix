@@ -56,6 +56,16 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         logger.info(
             "Reference data ready: %s wards, %s POIs", counts["wards"], counts["pois"]
         )
+        
+        # Start expiry checker background loop
+        try:
+            import asyncio
+            from app.services.expiry_checker import run_expiry_checker_loop
+            asyncio.create_task(run_expiry_checker_loop())
+            logger.info("Started background expiry checker loop")
+        except ImportError:
+            pass
+            
     except Exception:  # noqa: BLE001 - never block startup on seed data
         logger.exception("Could not load reference data; run scripts/build_wards.py")
         db.rollback()

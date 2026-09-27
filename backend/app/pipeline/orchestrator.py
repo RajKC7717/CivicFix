@@ -181,6 +181,14 @@ def refresh_issue_scoring(
     )
     issue.sla_breached = state.breached
 
+    # Acknowledgment window: when an officer should first view this issue
+    if issue.ack_deadline is None:
+        ack = sla_stage.assign_ack_window(
+            issue.category, issue.hazard_flags or [], issue.created_at
+        )
+        issue.ack_window_hours = ack.window_hours
+        issue.ack_deadline = ack.deadline
+
     underserved = equity_service.underserved_ward_codes(db)
     result = priority_stage.compute_priority(
         db,

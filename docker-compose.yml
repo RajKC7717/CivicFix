@@ -1,0 +1,41 @@
+# NagarNetra (PS-18 CivicFix) - containerised.
+#
+#   docker compose up --build     ->  http://localhost:8080
+#
+# NOTE: the *tested* path on the build machine is ./run.ps1 / ./run.sh, which
+# needs no Docker. This compose file is provided for parity with the brief and
+# is written to the same configuration, but Docker was not installed on the
+# machine used to build the project, so it has not been executed end to end.
+services:
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      # Fully offline by default - no API key required.
+      LLM_PROVIDER: "${LLM_PROVIDER:-none}"
+      ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-}"
+      SECRET_KEY: "${SECRET_KEY:-nagarnetra-dev-secret-change-me}"
+      DEMO_MODE: "true"
+      GEOCODING_ENABLED: "${GEOCODING_ENABLED:-true}"
+      CORS_ORIGINS: "http://localhost:8080"
+    volumes:
+      # Keep the database and uploaded photos across restarts.
+      - nagarnetra-var:/app/backend/var
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+volumes:
+  nagarnetra-var:

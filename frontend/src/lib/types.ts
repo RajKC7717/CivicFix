@@ -208,6 +208,7 @@ export interface TrackResponse {
   can_give_feedback: boolean
   feedback_given: boolean
   pipeline_status: string
+  ack: AckBlock | null
 }
 
 export interface IssueDetailResponse {
@@ -272,6 +273,7 @@ export interface MapItem {
   score: number
   report_count: number
   sla_breached: boolean
+  ack_expired: boolean
 }
 
 export interface GroupEquity {

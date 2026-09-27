@@ -206,10 +206,12 @@ export function Timeline({
   events,
   currentStatus,
   labels,
+  ackHours,
 }: {
   events: StatusEventItem[]
   currentStatus: string
   labels?: Record<string, string>
+  ackHours?: number | null
 }) {
   const reachedIndex = LIFECYCLE.findIndex((stage) => stage.key === currentStatus)
   const eventByStatus = new Map(events.map((event) => [event.to_status, event]))
@@ -249,6 +251,9 @@ export function Timeline({
                     index < reachedIndex ? 'bg-success-500' : 'bg-ink-150 bg-ink-100',
                   )}
                 />
+              )}
+              {!isLast && stage.key === 'received' && ackHours && !eventByStatus.has('verified') && (
+                <span className="text-2xs text-ink-400 mt-1 whitespace-nowrap">~{ackHours}h est.</span>
               )}
             </div>
             <div className="min-w-0 pt-0.5">
